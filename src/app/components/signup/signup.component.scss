@@ -1,0 +1,73 @@
+.main {
+    margin: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    padding: 2%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    border: solid 1px grey;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo-title {
+    margin-top: 5%;
+    font-size: 28px;
+}
+
+.form-title {
+    margin-top: 4%;
+    margin-bottom: 8%;
+    font-size: 24px;
+}
+
+.mat-outline-user {
+    width: 440px;
+}
+
+.name,
+.password {
+    display: flex;
+    gap: 20px;
+
+}
+
+.username {
+    display: flex;
+}
+
+.btn-class {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10%;
+}
+
+.sign-in {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    margin-right: -150%;
+    display: table-cell;
+    max-width: 600px;
+}
