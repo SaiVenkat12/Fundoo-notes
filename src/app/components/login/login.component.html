@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="main">
+    <form>
+        <div class="form-content">
+            <span class="logo-title">
+                <span style="color: blue;">G</span>
+                <span style="color:red ;">o</span>
+                <span style="color:yellow ;">o</span>
+                <span style="color: blue;">g</span>
+                <span style="color: green;">l</span>
+                <span style="color: red;">e</span>
+            </span>
+            <span class="form-title">Login</span>
+            <span class="form-heading">Use your Google Account</span>
+            <div class="email">
+                <mat-form-field class="mat-outline" appearance="outline">
+                    <mat-label>Email or phone</mat-label>
+                    <input matInput placeholder="">
+                </mat-form-field>
+            </div>
+
+            <div class="password">
+                <mat-form-field class="mat-outline" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="">
+                </mat-form-field>
+                <div class="forgot">
+                    <button mat-button color="primary">forgot Password?</button>
+                </div>
+            </div>
+
+            <div class="btn">
+                <div>
+                    <button mat-button color="primary" routerLink="/app-signup">Create new account</button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" onclick="">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
