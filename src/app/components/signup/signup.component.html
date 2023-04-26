@@ -1,32 +1,35 @@
 <div class="main">
-  <form>
+  <form [formGroup]="signupform" (ngSubmit)="signup()">
     <div class="form-content">
       <span class="logo-title">
-        <span style="color: blue;">G</span>
-        <span style="color:red ;">o</span>
-        <span style="color:yellow ;">o</span>
-        <span style="color: blue;">g</span>
-        <span style="color: green;">l</span>
-        <span style="color: red;">e</span>
+        <span class="title1">G</span>
+                <span class="title2">o</span>
+                <span class="title3">o</span>
+                <span class="title1">g</span>
+                <span class="title4">l</span>
+                <span class="title2">e</span>
       </span>
       <span class="form-title">Create your Google Account</span>
       <div class="name-div">
         <div class="name">
           <mat-form-field class="mat-outline" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="first Name">
+            <input matInput formControlName="firstname" placeholder="first Name">
+            <mat-error>Name is required</mat-error>
           </mat-form-field>
   
           <mat-form-field class="mat-outline" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="last Name">
+            <input matInput formControlName="lastname" placeholder="last Name">
+            <mat-error>Name is required</mat-error>
           </mat-form-field>
         </div>
       </div>
       <div class="username">
         <mat-form-field class="mat-outline-user" appearance="outline">
           <mat-label>username</mat-label>
-          <input matInput placeholder="username">
+          <input matInput formControlName="email" placeholder="username">
+          <mat-error>email is required</mat-error>
           <mat-hint>you can use letters, numbers & periods</mat-hint>
         </mat-form-field>
         <a class="current-email" href="">Use my current email instead</a>
@@ -35,12 +38,14 @@
         <div class="password">
           <mat-form-field class="mat-outline" appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="password">
+            <input matInput formControlName="password" type="password" placeholder="password">
+            <mat-error>password is required</mat-error>
           </mat-form-field>
 
           <mat-form-field class="mat-outline" appearance="outline">
             <mat-label>Confirm</mat-label>
-            <input matInput placeholder="Confirm">
+            <input matInput formControlName="confirmpassword" type="password" placeholder="Confirm">
+            <mat-error>password is required</mat-error>
           </mat-form-field>
         </div>
         <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
