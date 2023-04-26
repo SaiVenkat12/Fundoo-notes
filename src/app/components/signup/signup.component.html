@@ -10,16 +10,18 @@
         <span style="color: red;">e</span>
       </span>
       <span class="form-title">Create your Google Account</span>
-      <div class="name">
-        <mat-form-field class="mat-outline" appearance="outline">
-          <mat-label>First Name</mat-label>
-          <input matInput placeholder="firstName">
-        </mat-form-field>
-
-        <mat-form-field class="mat-outline" appearance="outline">
-          <mat-label>Last Name</mat-label>
-          <input matInput placeholder="last Name">
-        </mat-form-field>
+      <div class="name-div">
+        <div class="name">
+          <mat-form-field class="mat-outline" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="first Name">
+          </mat-form-field>
+  
+          <mat-form-field class="mat-outline" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="last Name">
+          </mat-form-field>
+        </div>
       </div>
       <div class="username">
         <mat-form-field class="mat-outline-user" appearance="outline">
@@ -48,12 +50,12 @@
           <mat-checkbox>Show Password</mat-checkbox>
         </section>
       </div>
-      <div class="btn-class">
-        <div class="sign-in">
-          <a href="../login/login.component.html">Sign in insted</a>
+      <div class="btn">
+        <div>
+          <button mat-button color="primary" routerLink="/">Sign in insted</button>
         </div>
-        <div class="btn">
-          <button mat-raised-button color="primary" onclick="">Submit</button>
+        <div >
+          <button mat-raised-button color="primary" >Next</button>
         </div>
       </div>
     </div>
