@@ -1,33 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from 'src/app/Services/UserService/user.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit{
+export class SignupComponent implements OnInit {
   signupform!: FormGroup;
   submitted = false;
+  router: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private userService: UserService) { }
 
   ngOnInit() {
     this.signupform = this.formBuilder.group({
-      firstname: ['', [Validators.required]],
-      lastname: ['', [Validators.required,]],
+      firstname: ['', [Validators.required, Validators.pattern("[a-zA-Z]*")]],
+      lastname: ['', [Validators.required, Validators.pattern("[a-zA-Z]*")]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmpassword: ['', [Validators.required, Validators.minLength(8)]]
+
     });
 
   }
   signup() {
-    if(this.signupform.valid){
-      console.log("signup function working", this.signupform.value);
+    if (this.signupform.value.confirmpassword === this.signupform.value.password) {
+      if (this.signupform.valid) {
+
+        let reqSignup = {
+          firstName: this.signupform.value.firstname,
+          lastName: this.signupform.value.lastname,
+          service: "advance",
+          email: this.signupform.value.email,
+          password: this.signupform.value.password,
+        }
+        this.userService.signupService(reqSignup).subscribe((result: any) => {
+          console.log("signup function working", reqSignup);
+          this.snackBar.open('Account created Successfully!', '', { duration: 2000 });
+        })
+      }
+      else {
+        console.log("invalid data");
+        this.snackBar.open('SignUp failed!', '', {
+          duration: 1000
+        });
+      }
     }
-    else{
-      console.log("invalid data");
+    else {
+      console.log('error:both passwords are not same!');
+      this.snackBar.open('both passwords are not same!', '', {
+        duration: 2000
+      });
     }
+
   }
 }
