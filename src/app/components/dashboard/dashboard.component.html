@@ -1,0 +1,70 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <div class="toolbar">
+        <mat-toolbar color="primary" class="example-toolbar">
+            <div class="toolbar-left">
+                <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+                <div class="app-Logo">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png">
+                    <div class="app-name">Fundoo</div>
+                </div>
+            </div>
+            <div class="toolbar-right">
+                <div>
+                    <button mat-icon-button ><mat-icon>refresh</mat-icon></button>
+                    <button mat-icon-button ><mat-icon>view_agenda</mat-icon></button>
+                    <button mat-icon-button ><mat-icon>settings</mat-icon></button>
+                </div>
+                <div>
+                    <button mat-icon-button ><mat-icon>apps</mat-icon></button>
+                    <button mat-icon-button ><mat-icon>account_circle</mat-icon></button>
+                </div>
+            </div>
+        </mat-toolbar>
+    </div>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <div class="side-menu">
+                <mat-nav-list>
+                    <div class="side-title">
+                        <span>
+                            <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
+                        </span>
+                        <a mat-list-item routerLink=".">Notes</a>
+                    </div>
+                    <div class="side-title">
+                        <span>
+                            <img class="side-icons"
+                                src="../../../assets/icons/notifications_FILL0_wght400_GRAD0_opsz48.svg">
+                        </span>
+                        <a mat-list-item routerLink=".">Reminder</a>
+                    </div>
+                    <div class="side-title">
+                        <span>
+                            <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
+                        </span>
+                        <a mat-list-item routerLink=".">Edit Label</a>
+
+                    </div>
+                    <div class="side-title">
+                        <span>
+                            <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
+                        </span>
+                        <a mat-list-item routerLink=".">Archive</a>
+                    </div>
+                    <div class="side-title">
+                        <span>
+                            <img class="side-icons" src="../../../assets/icons/delete_icon.svg">
+                        </span>
+                        <a mat-list-item routerLink=".">Trash</a>
+                    </div>
+                </mat-nav-list>
+            </div>
+        </mat-sidenav>
+
+
+        <mat-sidenav-content>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

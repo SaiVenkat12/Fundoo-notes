@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/UserService/user.service';
 
 @Component({
@@ -12,21 +12,26 @@ import { UserService } from 'src/app/Services/UserService/user.service';
 export class SignupComponent implements OnInit {
   signupform!: FormGroup;
   submitted = false;
-  router: any;
+  hide:Boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private userService: UserService, private route: Router) { }
 
   ngOnInit() {
+    
     this.signupform = this.formBuilder.group({
       firstname: ['', [Validators.required, Validators.pattern("[a-zA-Z]*")]],
       lastname: ['', [Validators.required, Validators.pattern("[a-zA-Z]*")]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmpassword: ['', [Validators.required, Validators.minLength(8)]]
-
+      confirmpassword: ['', [Validators.required, Validators.minLength(8)]],
     });
-
   }
+
+  show(){
+    this.hide=!this.hide;
+    console.log("show");
+  }
+
   signup() {
     if (this.signupform.value.confirmpassword === this.signupform.value.password) {
       if (this.signupform.valid) {
@@ -40,7 +45,9 @@ export class SignupComponent implements OnInit {
         }
         this.userService.signupService(reqSignup).subscribe((result: any) => {
           console.log("signup function working", reqSignup);
-          this.snackBar.open('Account created Successfully!', '', { duration: 2000 });
+          this.snackBar.open('Account created Successfully!', '', { 
+            duration: 2000 });
+            this.route.navigateByUrl('/login');
         })
       }
       else {

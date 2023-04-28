@@ -14,9 +14,4 @@ export class HttpService {
     return this.httpClient.post(this.baseUrl + url, reqPayload, token && httpAuthOptions)
   }
 
-  getService(url: string, token: boolean, httpAuthOptions: any) {
-    return this.httpClient.get(this.baseUrl + url, token && httpAuthOptions)
-  }
-
-
 }

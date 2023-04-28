@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/Services/UserService/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginform!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private snackBar: MatSnackBar, private route: Router) { }
 
   ngOnInit() {
     this.loginform = this.formBuilder.group({
@@ -24,11 +27,27 @@ export class LoginComponent implements OnInit {
 
   }
   login() {
-    if(this.loginform.valid){
-      console.log("login function working", this.loginform.value);
+    if (this.loginform.valid) {
+      let reqdata = {
+        email: this.loginform.value.email,
+        password: this.loginform.value.password,
+      }
+
+      this.userService.loginService(reqdata).subscribe((result: any) => {
+        console.log("Login function working", result);
+        this.snackBar.open('Login Successfully!', '', { 
+          duration: 2000 
+        });
+        localStorage.setItem('token', result.id)
+        console.log("id=",result.id);
+        this.route.navigateByUrl('/home');
+      })
     }
-    else{
+    else {
       console.log("invalid data");
+      this.snackBar.open('Login failed!', '', {
+        duration: 1000
+      });
     }
   }
 }
