@@ -12,7 +12,7 @@ import { UserService } from 'src/app/Services/UserService/user.service';
 export class SignupComponent implements OnInit {
   signupform!: FormGroup;
   submitted = false;
-  hide:Boolean = true;
+  showPassword: boolean=false;
 
   constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private userService: UserService, private route: Router) { }
 
@@ -27,10 +27,9 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  show(){
-    this.hide=!this.hide;
-    console.log("show");
-  }
+  showHidePassword(e:any) {
+    this.showPassword = e.target.checked;
+}
 
   signup() {
     if (this.signupform.value.confirmpassword === this.signupform.value.password) {
@@ -59,7 +58,7 @@ export class SignupComponent implements OnInit {
     }
     else {
       console.log('error:both passwords are not same!');
-      this.snackBar.open('both passwords are not same!', '', {
+      this.snackBar.open("Those passwords didn't match. Try again!", '', {
         duration: 2000
       });
     }

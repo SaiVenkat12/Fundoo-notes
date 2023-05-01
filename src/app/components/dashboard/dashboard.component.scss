@@ -14,11 +14,6 @@
     z-index: 2;
   }
   
-  .app-name {
-    margin-left: 8px;
-    color: #5f6368;
-  }
-  
   .example-sidenav-container {
     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
@@ -58,6 +53,13 @@
     font-size: 22px;
     line-height: 24px;
     background-color: #ffff;
+    cursor: pointer;
+  }
+
+  .app-name {
+    margin: 0;
+    margin-left:8px;
+    color: #5f6368;
   }
 
   .side-menu{
@@ -68,6 +70,9 @@
     margin-left: 16px;
     display: flex;
     align-items: center;
+    //background: #feefc3;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    cursor: pointer;
   }
 
   .side-icons{

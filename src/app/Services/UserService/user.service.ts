@@ -37,4 +37,27 @@ export class UserService {
     return this.httpService.postService('user/login', reqdata, false, httpHeadersOption)
   }
 
+  forgotpassword(reqdata:any){
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers : new HttpHeaders({ 
+        contentType : 'application/json',
+        authorization : this.token
+      })
+    }
+
+    return this.httpService.postService("user/forgot-password", reqdata, false, httpHeadersOption)
+  }
+
+  resetpassword(reqdata:any){
+
+    let httpHeadersOption = {
+      headers : new HttpHeaders({ 
+        contentType : 'application/json',
+        authorization : this.token
+      })
+    }
+    return this.httpService.postService("user/reset-password", reqdata, true, httpHeadersOption)
+  }
+
 }

@@ -38,13 +38,13 @@
         <div class="password">
           <mat-form-field class="mat-outline" appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" placeholder="password">
+            <input matInput formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="password">
             <mat-error>password is required</mat-error>
           </mat-form-field>
 
           <mat-form-field class="mat-outline" appearance="outline">
             <mat-label>Confirm</mat-label>
-            <input matInput formControlName="confirmpassword" type="password" placeholder="Confirm">
+            <input matInput formControlName="confirmpassword" [type]="showPassword ? 'text' : 'password'" placeholder="Confirm">
             <mat-error>password is required</mat-error>
           </mat-form-field>
         </div>
@@ -52,7 +52,7 @@
       </div>
       <div>
         <section class="checkbox-section">
-          <mat-checkbox (click)="show()">Show Password</mat-checkbox>
+          <mat-checkbox (change)="showHidePassword($event)">Show Password</mat-checkbox>
         </section>
       </div>
       <div class="btn">
