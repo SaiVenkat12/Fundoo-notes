@@ -27,10 +27,10 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  showHidePassword(e:any) {
+  showHidePassword(e: any) {
     this.showPassword = e.target.checked;
-}
-
+  }
+  
   signup() {
     if (this.signupform.value.confirmpassword === this.signupform.value.password) {
       if (this.signupform.valid) {
