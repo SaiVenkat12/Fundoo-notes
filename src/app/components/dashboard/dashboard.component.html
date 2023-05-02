@@ -4,14 +4,15 @@
             <div class="toolbar-left">
                 <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
                 <div class="app-Logo" routerLink="/home">
-                    <img class="logo-img" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="logo">
+                    <img class="logo-img" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
+                        alt="logo">
                     <h1 class="app-name">Fundoo</h1>
-                    
+
                 </div>
             </div>
             <div class="toolbar-right">
                 <div class="right1">
-                    <button mat-icon-button class="top-icons" routerLink="/home" ><mat-icon>refresh</mat-icon></button>
+                    <button mat-icon-button class="top-icons" routerLink="/home"><mat-icon>refresh</mat-icon></button>
                     <button mat-icon-button class="top-icons"><mat-icon>view_agenda</mat-icon></button>
                     <button mat-icon-button class="top-icons"><mat-icon>settings</mat-icon></button>
                 </div>
@@ -68,8 +69,10 @@
             </div>
         </mat-sidenav>
 
-
         <mat-sidenav-content>
+
+            <div><router-outlet></router-outlet></div>
+            <app-getallnotes></app-getallnotes>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

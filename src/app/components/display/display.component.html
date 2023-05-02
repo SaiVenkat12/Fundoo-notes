@@ -1,0 +1,13 @@
+<div class="display">
+    <div class="displaynote" class="title-content" *ngIf="!show || show" (click)="showing()" >
+        <mat-card class="note-title">
+            <mat-card-content class="title-content">
+                Note Content ....
+                <!-- <input class="title-text" type="text" placeholder="Take a note..."> -->
+            </mat-card-content>
+            <mat-card-actions *ngIf="!show">
+                <app-icons></app-icons>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

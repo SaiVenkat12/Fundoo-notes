@@ -1,0 +1,57 @@
+.takenote{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1px;
+    color: #5f6368;
+    
+}
+
+.note{
+    display: flex;
+    flex-direction: row;
+}
+
+.note-title{
+    width: 50%;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149);
+}
+
+.title-text{
+    width: 100%;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+
+.mat-mdc-card-content:first-child, .mat-mdc-card-content:last-child {
+    padding: 8px;
+}
+
+.mdc-card__actions{
+    padding-right: 30px;
+    justify-content: space-between;
+}
+
+.title-content{
+    
+    display: flex;
+} 
+.title-icons{
+    display: flex;
+}
+
+
+.top-icons{
+    height: 40px;
+    padding: 8px;
+}
+
+
+.note{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}

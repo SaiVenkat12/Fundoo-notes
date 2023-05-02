@@ -90,16 +90,19 @@
     .app-name{
       font-size: 20px;
     }
+    .toolbar-left{
+      padding-right: 20px;
+    }
     .toolbar-right{
       padding-right: 10px;
-      gap: 10px;
+      gap: 5px;
     }
     .right1{
       display: flex;
-      gap:15px;
+      gap: 10px;
     }
 
     .top-icons{
-      width: 32px;
+      width: 30px;
     }
   }

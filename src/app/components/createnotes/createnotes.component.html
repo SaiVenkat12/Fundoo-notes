@@ -1,0 +1,33 @@
+<div class="takenote">
+    <div class="note" *ngIf="!show">
+        <mat-card class="note-title">
+            <mat-card-content class="title-content">
+                <input class="title-text" type="text" placeholder="Title">
+                <div class="title-icons" *ngIf="!show">
+                    <button mat-icon-button matTooltip="pin note"
+                        class="top-icons"><mat-icon>push_pin</mat-icon></button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        <div class="note">
+            <mat-card class="note-title">
+                <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()">
+                    <input class="title-text" type="text" placeholder="Take a note...">
+                    <div class="title-icons" *ngIf="show">
+                        <button mat-icon-button matTooltip="check box"
+                            class="top-icons"><mat-icon>check_box</mat-icon></button>
+                        <button mat-icon-button class="top-icons"><mat-icon>brush</mat-icon></button>
+                        <button mat-icon-button class="top-icons"><mat-icon>image</mat-icon></button>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions *ngIf="!show">
+                    <app-icons></app-icons>
+                    <button mat-button (click)="closenote()">Close</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
