@@ -10,7 +10,12 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreatenotesComponent } from './components/createnotes/createnotes.component';
+import { GetallnotesComponent } from './components/getallnotes/getallnotes.component';
+import { DisplayComponent } from './components/display/display.component';
+import { IconsComponent } from './components/icons/icons.component';
 
+import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -22,11 +27,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
-import { CreatenotesComponent } from './components/createnotes/createnotes.component';
-import { GetallnotesComponent } from './components/getallnotes/getallnotes.component';
-import { IconsComponent } from './components/icons/icons.component';
 import {MatCardModule} from '@angular/material/card';
-import { DisplayComponent } from './components/display/display.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { DisplayComponent } from './components/display/display.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
@@ -57,7 +61,8 @@ import { DisplayComponent } from './components/display/display.component';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
     
   ],
   providers: [],

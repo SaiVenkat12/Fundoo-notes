@@ -7,18 +7,40 @@
                     <img class="logo-img" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
                         alt="logo">
                     <h1 class="app-name">Fundoo</h1>
-
                 </div>
             </div>
+
+            <div class="searchbar-top">
+                <div class="searchbar">
+                    <!-- <button class="search-icon">
+                        <span>
+                        <img class="side-icons" src="../../../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg">
+                    </span></button> -->
+                    <button mat-icon-button matTooltip="search" class="top-icons">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <input class="searchtext"  type="text" placeholder="Search">
+                </div>
+            </div>
+
             <div class="toolbar-right">
                 <div class="right1">
-                    <button mat-icon-button class="top-icons" routerLink="/home"><mat-icon>refresh</mat-icon></button>
-                    <button mat-icon-button class="top-icons"><mat-icon>view_agenda</mat-icon></button>
-                    <button mat-icon-button class="top-icons"><mat-icon>settings</mat-icon></button>
+                    <button mat-icon-button matTooltip="refresh" class="top-icons"
+                        routerLink="/home"><mat-icon>refresh</mat-icon>
+                    </button>
+
+                    <button mat-icon-button matTooltip="list view"
+                        class="top-icons"><mat-icon>view_agenda</mat-icon></button>
+                    <button mat-icon-button matTooltip="settings" class="top-icons"><mat-icon>settings</mat-icon>
+                    </button>
                 </div>
+                
                 <div class="right2">
-                    <button mat-icon-button class="top-icons"><mat-icon>apps</mat-icon></button>
-                    <button mat-icon-button class="top-icons"><mat-icon>account_circle</mat-icon></button>
+                    <button mat-icon-button matTooltip="apps" class="top-icons"><mat-icon>apps</mat-icon>
+                    </button>
+
+                    <button mat-icon-button matTooltip="account" class="top-icons"><mat-icon>account_circle</mat-icon>
+                    </button>
                 </div>
             </div>
         </mat-toolbar>
@@ -71,8 +93,8 @@
 
         <mat-sidenav-content>
 
-            <div><router-outlet></router-outlet></div>
-            <app-getallnotes></app-getallnotes>
+            <router-outlet></router-outlet>
+
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

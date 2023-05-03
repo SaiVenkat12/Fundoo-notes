@@ -80,6 +80,35 @@
     height: 24px;
     display: flex;
   }
+  .searchbar-top{
+    margin-left: 15px;
+    margin-right: 13%;
+    width: -webkit-fill-available;
+    background: #f1f3f4;
+    border: 1px solid transparent;
+    border-radius: 10px;
+  }
+  .searchbar{
+    height: 46px;
+    padding-left: 20px;
+    margin-left: 6px;
+    margin-right: 40px;
+    display:flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .search-icon{
+    border: none;
+  }
+
+  .searchtext{
+    font: normal 17px Google Sans,Roboto,Helvetica,Arial,sans-serif;
+    outline: none;
+    border: none;
+    background: #f1f3f4;
+  }
+
 
   @media only screen and (max-width: 500px) {
 

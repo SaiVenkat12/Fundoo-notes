@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-display',
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent {
-
+ @Input() displayallnotes:any
   show:boolean=true;
 
   showing(){

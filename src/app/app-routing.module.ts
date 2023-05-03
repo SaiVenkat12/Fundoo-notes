@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'home', component: DashboardComponent,
-    children: [{path: 'notes', component: GetallnotesComponent}]
+    children: [{ path: 'notes', component: GetallnotesComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'notes' }]
   }
 ];
 
