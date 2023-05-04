@@ -8,21 +8,24 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 })
 export class GetallnotesComponent implements OnInit {
 
-  allnotes:any
+  allnotes: any
   constructor(private noteservice: NotesService) { }
   ngOnInit(){
     this.getall()
+  }
+  getrefreshEvent(eventdata:any){
+    this.allnotes.unshift(eventdata);
+    console.log("refresh data");
+    
   }
   getall(){
 
     this.noteservice.getallnotes().subscribe((result:any)=>{
       console.log(result);
-      this.allnotes=result.data.data;
+      this.allnotes=result.data.data.reverse();
       console.log(this.allnotes);
     })
   }
-  refreshEvent($event:any){
-    this.getall()
-  }
+  
 
 }

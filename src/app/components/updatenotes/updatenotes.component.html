@@ -1,0 +1,14 @@
+<div>
+    <mat-card>
+        <mat-card-content>
+            <input class="title" type="text" [(ngModel)]="title" placeholder="title">
+        </mat-card-content>
+        <mat-card-content>
+            <input class="note" type="text" [(ngModel)]="description" placeholder="note">
+        </mat-card-content>
+        <mat-card-actions class="icons">
+            <app-icons></app-icons>
+            <button mat-button matTooltip="Close and Save" (click)="close()">Close</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

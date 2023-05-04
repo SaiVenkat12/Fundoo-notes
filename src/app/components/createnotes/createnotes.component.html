@@ -11,12 +11,21 @@
             <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()">
                 <input class="title-text" type="text" [(ngModel)]="description" placeholder="Take a note...">
                 <div class="title-icons" *ngIf="show">
-                    <button mat-icon-button matTooltip="note with checkbox"
-                        class="top-icons"><mat-icon>check_box</mat-icon></button>
-                    <button mat-icon-button matTooltip="note with drawing"
-                        class="top-icons"><mat-icon>brush</mat-icon></button>
-                    <button mat-icon-button matTooltip="note with image"
-                        class="top-icons"><mat-icon>image</mat-icon></button>
+                        <button mat-flat-button matTooltip="note with checkbox" class="top-icons">
+                            <span>
+                                <img class="note-icons" src="../../../assets/icons/check_box_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                        </button>
+                        <button mat-flat-button matTooltip="note with drawing" class="top-icons">
+                            <span>
+                                <img class="note-icons" src="../../../assets/icons/brush_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                        </button>
+                        <button mat-flat-button matTooltip="note with image" class="top-icons">
+                            <span>
+                                <img class="note-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                        </button>
                 </div>
             </mat-card-content>
             <mat-card-actions *ngIf="!show">

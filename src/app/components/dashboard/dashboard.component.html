@@ -12,10 +12,6 @@
 
             <div class="searchbar-top">
                 <div class="searchbar">
-                    <!-- <button class="search-icon">
-                        <span>
-                        <img class="side-icons" src="../../../assets/icons/search_FILL0_wght400_GRAD0_opsz48.svg">
-                    </span></button> -->
                     <button mat-icon-button matTooltip="search" class="top-icons">
                         <mat-icon>search</mat-icon>
                     </button>
@@ -52,41 +48,51 @@
             <div class="side-menu">
                 <mat-nav-list>
 
-                    <div class="side-title" routerLink="/">
-                        <span>
-                            <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
-                        </span>
-                        <a mat-list-item>Notes</a>
-                    </div>
+                    <button mat-flat-button color="" class="side-title" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
+                            </span>
+                            <h3 mat-list-item>Notes</h3>
+                        </div>                      
+                    </button>
 
-                    <div class="side-title" routerLink="">
-                        <span>
-                            <img class="side-icons"
-                                src="../../../assets/icons/notifications_FILL0_wght400_GRAD0_opsz48.svg">
-                        </span>
-                        <a mat-list-item routerLink="">Reminder</a>
-                    </div>
+                    <button mat-flat-button color="" class="side-title" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons"
+                                    src="../../../assets/icons/notifications_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                            <h3 mat-list-item routerLink="">Reminder</h3>
+                        </div>
+                    </button>
 
-                    <div class="side-title" routerLink="">
-                        <span>
-                            <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
-                        </span>
-                        <a mat-list-item routerLink="">Edit Label</a>
-                    </div>
+                    <button mat-flat-button color="" class="side-title" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
+                            </span>
+                            <h3 mat-list-item routerLink="">Edit Label</h3>
+                        </div>
+                    </button>
 
-                    <div class="side-title" routerLink="">
-                        <span>
-                            <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
-                        </span>
-                        <a mat-list-item routerLink="">Archive</a>
-                    </div>
+                    <button mat-flat-button color="" class="side-title" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
+                            </span>
+                            <h3 mat-list-item routerLink="">Archive</h3>
+                        </div>
+                    </button>
 
-                    <div class="side-title" routerLink="">
-                        <span>
-                            <img class="side-icons" src="../../../assets/icons/delete_icon.svg">
-                        </span>
-                        <a mat-list-item routerLink="">Trash</a>
-                    </div>
+                    <button mat-flat-button color="" class="side-title" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/delete_icon.svg">
+                            </span>
+                            <h3 mat-list-item routerLink="">Trash</h3>
+                        </div>
+                    </button>
                 </mat-nav-list>
             </div>
         </mat-sidenav>

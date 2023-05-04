@@ -1,8 +1,36 @@
 <div class="title-icons">
-    <button mat-icon-button matTooltip="Remind me" class="top-icons"><mat-icon>add_alert</mat-icon></button>
-    <button mat-icon-button matTooltip="collabrator" class="top-icons"><mat-icon>person_add_alt</mat-icon></button>
-    <button mat-icon-button matTooltip="background options" class="top-icons"><mat-icon>color_lens</mat-icon></button>
-    <button mat-icon-button matTooltip="add image" class="top-icons"><mat-icon>image</mat-icon></button>
-    <button mat-icon-button matTooltip="archive" class="top-icons"><mat-icon>archive</mat-icon></button>
-    <button mat-icon-button matTooltip="more" class="top-icons"><mat-icon>more_vert</mat-icon></button>
+    <button mat-flat-button matTooltip="Remind me" class="top-icons">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/add_alert_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+    <button mat-flat-button matTooltip="collabrator">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+    <button mat-flat-button matTooltip="background options">
+        <span class="button-icon">
+            <img class="side-icons" src="../../../assets/icons/palette_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+    <button mat-flat-button matTooltip="add image">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+    <button mat-flat-button matTooltip="archive">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
+        </span>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu" matTooltip="more">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/more_vert_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Delete note</button>
+  <button mat-menu-item>Add label</button>
+</mat-menu>
 </div>

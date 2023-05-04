@@ -7,7 +7,7 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
   styleUrls: ['./createnotes.component.scss']
 })
 export class CreatenotesComponent implements OnInit {
-  @Output() createnoteRefreshEvent = new EventEmitter<string>();
+  @Output() createnoteRefreshEvent = new EventEmitter<Object>();
 
   Title = '';
   description = '';
@@ -25,8 +25,7 @@ export class CreatenotesComponent implements OnInit {
   closenote() {
     if(this.Title || this.description !== '')
     {
-      this.show = true;
-
+      
       let reqdata = {
       title: this.Title,
       description: this.description,
@@ -35,11 +34,12 @@ export class CreatenotesComponent implements OnInit {
     
     this.noteservice.createnote(reqdata).subscribe((result:any)=>{
       console.log(result);
-      this.createnoteRefreshEvent.emit(result);
+      this.createnoteRefreshEvent.emit(result.status.details);
     })
 
     this.Title='';
     this.description='';
+    this.show = true;
     
     }
     else{

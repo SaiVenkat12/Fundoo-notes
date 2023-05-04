@@ -1,15 +1,22 @@
 <div class="display">
-    <div class="displaynote" class="title-content" *ngIf="!show || show" (click)="showing()" >
+    <div class="displaynote">
+
         <mat-card class="note-title" *ngFor="let note of displayallnotes">
-            <mat-card-content class="title-content">
-                {{note.title}}
-            </mat-card-content>
-            <mat-card-content class="content">
-                {{note.description}}
-            </mat-card-content>
-            <mat-card-actions *ngIf="!show">
-                <app-icons></app-icons>
-            </mat-card-actions>
+            <div (mouseover)="showButton = true" (mouseleave)="showButton = false">
+                <div (click)="openDialog(note)">
+                    <mat-card-content class="title-content">
+                        {{note.title}}
+                    </mat-card-content>
+    
+                    <mat-card-content class="content">
+                        {{note.description}}
+                    </mat-card-content>
+                </div>
+                <mat-card-actions *ngIf = "showButton" class="icons">
+                    <app-icons></app-icons>
+                </mat-card-actions>
+            </div>
+            
         </mat-card>
     </div>
 </div>

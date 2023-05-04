@@ -3,17 +3,33 @@
 }
 .displaynote{
     display: flex;
+    flex-wrap: wrap;
     color: #5f6368;
 }
 
 .note-title{
     margin: 16px;
-    padding-right: 15%;
     width: max-content;
-    min-height: 147px;
+    min-height: 107px;
+    min-width: 208px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
-    
 }
+
+img{
+    color: #5f6368;
+}
+
+// .icons{
+//     color: #5f6368;
+//     visibility: hiddden;
+// }
+
+// .icons:hover{
+//     visibility: visible;
+// }
+
+// .note-title:hover{
+//     visibility: visible;
+// }
