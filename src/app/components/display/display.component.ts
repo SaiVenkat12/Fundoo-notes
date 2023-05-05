@@ -12,7 +12,6 @@ export class DisplayComponent {
   @Output() updatenoteEvent = new EventEmitter<Object>();
   @Input() displayallnotes: any
 
-  showButton: boolean = true;
   title: any
   description: any
   

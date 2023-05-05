@@ -1,10 +1,10 @@
-<div class="title-icons">
+<div class="title-icons" *ngIf="show">
     <button matTooltip="Remind me" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/add_alert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button  matTooltip="collabrator" class="top-icons">
+    <button matTooltip="collabrator" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
@@ -14,12 +14,12 @@
             <img class="side-icons" src="../../../assets/icons/palette_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button  matTooltip="add image" class="top-icons">
+    <button matTooltip="add image" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button  matTooltip="archive" class="top-icons" (click)="archivenote()">
+    <button matTooltip="archive" class="top-icons" (click)="archivenote()">
         <span>
             <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
         </span>
@@ -29,8 +29,20 @@
             <img class="side-icons" src="../../../assets/icons/more_vert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-<mat-menu class="more-menu" #menu="matMenu">
-  <button mat-menu-item (click)="Delete()">Delete note</button>
-  <button mat-menu-item>Add label</button>
-</mat-menu>
+    <mat-menu class="more-menu" #menu="matMenu">
+        <button mat-menu-item (click)="Delete()">Delete note</button>
+        <button mat-menu-item>Add label</button>
+    </mat-menu>
+</div>
+<div class="title-icons" *ngIf="!show">
+    <button matTooltip="Delete Forever" class="top-icons">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/delete_forever_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+    <button matTooltip="restore" class="top-icons" >
+        <span>
+            <img class="side-icons" src="../../../assets/icons/restore_from_trash_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
 </div>

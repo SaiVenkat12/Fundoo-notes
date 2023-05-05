@@ -66,5 +66,27 @@ export class NotesService {
     return this.httpService.postService('notes/archiveNotes', reqdata, true, httpHeadersOption)
   }
 
+  getArchivenotes() {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.getService('notes/getArchiveNotesList', true, httpHeadersOption)
+  }
+
+  getTrashnotes() {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.getService('notes/getTrashNotesList', true, httpHeadersOption)
+  }
+
 }
 

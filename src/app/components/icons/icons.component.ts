@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
 
@@ -7,11 +7,19 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss']
 })
-export class IconsComponent {
+export class IconsComponent implements OnInit {
   @Input() noteinfo: any
   @Output() refreshpageEvent = new EventEmitter<any>();
 
+  show: boolean = true;
+
   constructor(private noteservice: NotesService, private snackBar: MatSnackBar) { }
+
+  ngOnInit(): void {
+    if(this.noteinfo.isDeleted===true){
+      this.show=false;
+    }
+  }
 
   Delete() {
     let reqdata = {
