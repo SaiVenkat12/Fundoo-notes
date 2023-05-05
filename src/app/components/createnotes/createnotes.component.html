@@ -29,7 +29,9 @@
                 </div>
             </mat-card-content>
             <mat-card-actions *ngIf="!show">
-                <app-icons></app-icons>
+                <div class="icons">
+                    <app-icons></app-icons>
+                </div>
                 <button mat-button matTooltip="Close and Save" (click)="closenote()">Close</button>
             </mat-card-actions>
         </mat-card>

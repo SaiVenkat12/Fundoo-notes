@@ -20,14 +20,15 @@ export class UpdatenotesComponent {
       title: this.title,
       description: this.description,
     }
-    this.noteservice.updatenotes(reqdata).subscribe((result: any) => {
-      console.log("data",reqdata);
-      console.log('title',this.title);
-      console.log(result.data.title);
-      
-      console.log("update: ",result.data);
-      this.dialogRef.close();
-    })
+      this.noteservice.updatenotes(reqdata).subscribe((result: any) => {
+        console.log("data", reqdata);
+        console.log('title', this.title);
+        console.log(result.data.title);
+
+        console.log("update: ", result.data);
+        this.dialogRef.close();
+      })
+
   }
 
 }

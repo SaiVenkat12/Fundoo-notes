@@ -8,51 +8,63 @@ import { HttpService } from '../HttpService/http.service';
 })
 export class NotesService {
 
-    token:any
+  token: any
   constructor(private httpService: HttpService) { }
 
-  createnote(reqdata:any){
+  createnote(reqdata: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
-      headers : new HttpHeaders({ 
-        contentType : 'application/json',
-        authorization : this.token,
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
       })
     }
     return this.httpService.postService('notes/addNotes', reqdata, true, httpHeadersOption)
   }
 
-  getallnotes(){
+  getallnotes() {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
-      headers : new HttpHeaders({ 
-        contentType : 'application/json',
-        authorization : this.token,
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
       })
     }
     return this.httpService.getService('notes/getNotesList', true, httpHeadersOption)
   }
 
-  updatenotes(reqdata:any){
+  updatenotes(reqdata: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
-      headers : new HttpHeaders({ 
-        contentType : 'application/json',
-        authorization : this.token,
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
       })
     }
     return this.httpService.postService('notes/updateNotes', reqdata, true, httpHeadersOption)
   }
 
-  deletenote(reqdata:any){
+  deletenote(reqdata: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
-      headers : new HttpHeaders({ 
-        contentType : 'application/json',
-        authorization : this.token,
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
       })
     }
     return this.httpService.postService('notes/trashNotes', reqdata, true, httpHeadersOption)
   }
+
+  archive(reqdata: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/archiveNotes', reqdata, true, httpHeadersOption)
   }
+
+}
 

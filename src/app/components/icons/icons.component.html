@@ -1,36 +1,36 @@
 <div class="title-icons">
-    <button mat-flat-button matTooltip="Remind me" class="top-icons">
+    <button matTooltip="Remind me" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/add_alert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button mat-flat-button matTooltip="collabrator">
+    <button  matTooltip="collabrator" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button mat-flat-button matTooltip="background options">
+    <button matTooltip="background options" class="top-icons">
         <span class="button-icon">
             <img class="side-icons" src="../../../assets/icons/palette_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button mat-flat-button matTooltip="add image">
+    <button  matTooltip="add image" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button mat-flat-button matTooltip="archive">
+    <button  matTooltip="archive" class="top-icons" (click)="archivenote()">
         <span>
             <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
         </span>
     </button>
-    <button mat-button [matMenuTriggerFor]="menu" matTooltip="more">
+    <button [matMenuTriggerFor]="menu" matTooltip="more" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/more_vert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Delete note</button>
+<mat-menu class="more-menu" #menu="matMenu">
+  <button mat-menu-item (click)="Delete()">Delete note</button>
   <button mat-menu-item>Add label</button>
 </mat-menu>
 </div>

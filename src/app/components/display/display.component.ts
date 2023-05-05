@@ -21,11 +21,14 @@ export class DisplayComponent {
   openDialog(note: any) {
     const dialogRef = this.dialog.open(UpdatenotesComponent, { data: note, });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log("Dialog result:",result);
-      this.updatenoteEvent.emit(result);
+       this.updatenoteEvent.emit();
     });
+  }
 
+  refreshDisplaydata(){
+    this.updatenoteEvent.emit();
   }
 
 }
