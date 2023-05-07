@@ -10,13 +10,13 @@
                 </div>
             </div>
 
-            <div class="searchbar-top">
-                <div class="searchbar">
+            <div class="searchbar-top" [ngClass]="{'selected': isSelected}">
+                <form class="searchbar" (click)="searchbg()" [ngClass]="{'selected': isSelected}">
                     <button mat-icon-button matTooltip="search" class="top-icons">
                         <mat-icon>search</mat-icon>
                     </button>
-                    <input class="searchtext"  type="text" placeholder="Search">
-                </div>
+                    <input class="searchtext" [ngClass]="{'selected': isSelected}" type="search" placeholder="Search" (keyup)="searchNote($event)">
+                </form>
             </div>
 
             <div class="toolbar-right">
@@ -30,7 +30,7 @@
                     <button mat-icon-button matTooltip="settings" class="top-icons"><mat-icon>settings</mat-icon>
                     </button>
                 </div>
-                
+
                 <div class="right2">
                     <button mat-icon-button matTooltip="apps" class="top-icons"><mat-icon>apps</mat-icon>
                     </button>
@@ -54,7 +54,7 @@
                                 <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
                             </span>
                             <h3 mat-list-item>Notes</h3>
-                        </div>                      
+                        </div>
                     </button>
 
                     <button mat-flat-button color="" class="side-title" routerLink="">
@@ -63,7 +63,7 @@
                                 <img class="side-icons"
                                     src="../../../assets/icons/notifications_FILL0_wght400_GRAD0_opsz48.svg">
                             </span>
-                            <h3 mat-list-item >Reminder</h3>
+                            <h3 mat-list-item>Reminder</h3>
                         </div>
                     </button>
 
@@ -72,16 +72,16 @@
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
                             </span>
-                            <h3 mat-list-item >Edit Label</h3>
+                            <h3 mat-list-item>Edit Label</h3>
                         </div>
                     </button>
 
                     <button mat-flat-button color="" class="side-title" routerLink="archive">
-                        <div class="side-button" >
+                        <div class="side-button">
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
                             </span>
-                            <h3 mat-list-item >Archive</h3>
+                            <h3 mat-list-item>Archive</h3>
                         </div>
                     </button>
 
@@ -90,7 +90,7 @@
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/delete_icon.svg">
                             </span>
-                            <h3 mat-list-item >Trash</h3>
+                            <h3 mat-list-item>Trash</h3>
                         </div>
                     </button>
                 </mat-nav-list>

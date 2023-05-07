@@ -16,8 +16,13 @@ export class IconsComponent implements OnInit {
   constructor(private noteservice: NotesService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    if(this.noteinfo.isDeleted===true){
-      this.show=false;
+    if(this.noteinfo!=null){
+      if(this.noteinfo.isDeleted===true){
+        this.show=false;
+      }
+    }
+    else{
+      this.show=true;
     }
   }
 

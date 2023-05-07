@@ -8,7 +8,7 @@
 }
 
 .note-title{
-    margin: 16px;
+    margin: 6px;
     width: max-content;
     min-height: 107px;
     min-width: 208px;
@@ -34,6 +34,7 @@ img{
 }
 
 .card{
+    max-width: 240px;
     height: 100%;
     display: flex;
     flex-direction: column;

@@ -18,11 +18,19 @@ img{
     height: 24px;
 }
 
-button{
+.top-icons{
     border: none;
     border-radius: 29%;
     background: none;
     cursor: pointer;
+}
+
+.color-menu{
+    display: flex;
+}
+
+button:hover{
+    background-color: #d4d2d2;
 }
 
 .more-menu{

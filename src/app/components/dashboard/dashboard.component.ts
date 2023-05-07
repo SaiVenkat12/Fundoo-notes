@@ -1,7 +1,6 @@
-import {MediaMatcher} from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { DataService } from 'src/app/Services/DataServices/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,24 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnDestroy {
+  
   mobileQuery: MediaQueryList;
-
-  // fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
-
-  // fillerContent = Array.from(
-  //   {length: 50},
-  //   () =>
-  //     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-  //      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-  //      laboris nisi ut aliquip ex ea commodo consequat.`,
-  // );
+  isSelected = false;
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService: DataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  searchbg(){
+    this.isSelected==!this.isSelected;
+  }
+
+  searchNote(event: any) {
+    console.log(event.target.value);
+    this.dataService.changeMessage(event.target.value);
+
   }
 
   ngOnDestroy(): void {

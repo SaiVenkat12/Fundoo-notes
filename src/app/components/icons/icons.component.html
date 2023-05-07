@@ -9,7 +9,7 @@
             <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button matTooltip="background options" class="top-icons">
+    <button [matMenuTriggerFor]="color" matTooltip="background options" class="top-icons">
         <span class="button-icon">
             <img class="side-icons" src="../../../assets/icons/palette_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
@@ -29,11 +29,23 @@
             <img class="side-icons" src="../../../assets/icons/more_vert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
+
     <mat-menu class="more-menu" #menu="matMenu">
         <button mat-menu-item (click)="Delete()">Delete note</button>
         <button mat-menu-item>Add label</button>
     </mat-menu>
+
+    <mat-menu class="color-menu" #color="matMenu">
+        <button mat-menu-item >Red
+        </button>
+        <button mat-menu-item>blue</button>
+    </mat-menu>
 </div>
+
+
+
+
+
 <div class="title-icons" *ngIf="!show">
     <button matTooltip="Delete Forever" class="top-icons">
         <span>

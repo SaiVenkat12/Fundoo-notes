@@ -34,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { TrashComponent } from './components/trash/trash.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { SearchnotePipe } from './Pipes/filterPipe/searchnote.pipe';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
     UpdatenotesComponent,
     TrashComponent,
     ArchiveComponent,
+    SearchnotePipe,
   ],
   imports: [
     BrowserModule,
