@@ -1,4 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
+import { NgClass } from '@angular/common';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { DataService } from 'src/app/Services/DataServices/data.service';
 
@@ -10,7 +11,7 @@ import { DataService } from 'src/app/Services/DataServices/data.service';
 export class DashboardComponent implements OnDestroy {
   
   mobileQuery: MediaQueryList;
-  isSelected = false;
+  isSelected =false;
 
   private _mobileQueryListener: () => void;
 
@@ -19,9 +20,8 @@ export class DashboardComponent implements OnDestroy {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
   searchbg(){
-    this.isSelected==!this.isSelected;
+    this.isSelected=true; 
   }
 
   searchNote(event: any) {

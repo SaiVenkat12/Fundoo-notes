@@ -40,6 +40,35 @@ export class IconsComponent implements OnInit {
     })
   }
 
+  deleteForver(){
+    let reqdata = {
+      noteIdList: [this.noteinfo.id],
+    }
+    this.noteservice.deletenotesForever(reqdata).subscribe((result:any)=>{
+      console.log(result);
+      
+      this.refreshpageEvent.emit(result);
+      this.snackBar.open('note deleted', '', {
+        duration: 2000,
+      });
+    })
+  }
+
+  restore(){
+    let reqdata = {
+      noteIdList: [this.noteinfo.id],
+      isDeleted: false,
+    }
+    
+    this.noteservice.deletenote(reqdata).subscribe((result: any) => {
+      console.log(result);
+      this.refreshpageEvent.emit(result);
+      this.snackBar.open('note restored', '', {
+        duration: 2000,
+      });
+    })
+  }
+
   archivenote() {
     let reqdata = {
       noteIdList: [this.noteinfo.id],

@@ -2,19 +2,25 @@
     margin: 3%;
 }
 .displaynote{
+    padding-right: 12%;
+   // margin-left: 10px;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     color: #5f6368;
 }
 
 .note-title{
-    margin: 6px;
-    width: max-content;
-    min-height: 107px;
-    min-width: 208px;
+    margin: 12px;
+    width: 240px;
+    transform: translate(256px, 0px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 1px solid #e0e0e0;
+    border-radius: 2%;
+    box-shadow: none;
+    
 }
 
 img{
@@ -41,11 +47,17 @@ img{
     justify-content: space-between;
 }
 
-.card:hover{
+.note-title:hover, .card:hover{
     box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149);
 }
 
 .card:hover .mdc-card__actions{
     visibility: visible;
     
+}
+
+@media only screen and (max-width: 1100px) {
+    .note-title{
+        transform: translate(150px, 0px);
+    }
 }

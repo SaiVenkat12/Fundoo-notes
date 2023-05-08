@@ -10,13 +10,14 @@
                 </div>
             </div>
 
-            <div class="searchbar-top" [ngClass]="{'selected': isSelected}">
-                <form class="searchbar" (click)="searchbg()" [ngClass]="{'selected': isSelected}">
+            <div class="searchbar-top" [ngClass]="{'searchChange': isSelected}" (click)="searchbg()">
+                <div class="searchbar">
                     <button mat-icon-button matTooltip="search" class="top-icons">
                         <mat-icon>search</mat-icon>
                     </button>
-                    <input class="searchtext" [ngClass]="{'selected': isSelected}" type="search" placeholder="Search" (keyup)="searchNote($event)">
-                </form>
+                    <input class="searchtext" [ngClass]="{'searchChange': isSelected}" type="search" placeholder="Search"
+                        (keyup)="searchNote($event)">
+                </div>
             </div>
 
             <div class="toolbar-right">
@@ -48,14 +49,16 @@
             <div class="side-menu">
                 <mat-nav-list>
 
-                    <button mat-flat-button color="" class="side-title" routerLink="notes">
-                        <div class="side-button">
-                            <span>
-                                <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
-                            </span>
-                            <h3 mat-list-item>Notes</h3>
-                        </div>
-                    </button>
+                    <div class="side">
+                        <button mat-flat-button class="side-title" routerLink="notes" (click)="snav.toggle()">
+                            <div class="side-button">
+                                <span>
+                                    <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
+                                </span>
+                                <h3 mat-list-item>Notes</h3>
+                            </div>
+                        </button>
+                    </div>
 
                     <button mat-flat-button color="" class="side-title" routerLink="">
                         <div class="side-button">
@@ -67,7 +70,7 @@
                         </div>
                     </button>
 
-                    <button mat-flat-button color="" class="side-title" routerLink="">
+                    <button mat-flat-button class="side-title" routerLink="">
                         <div class="side-button">
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/edit_icon.svg">

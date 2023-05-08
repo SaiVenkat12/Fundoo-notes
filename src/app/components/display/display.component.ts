@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog,MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { UpdatenotesComponent } from '../updatenotes/updatenotes.component';
 import { DataService } from 'src/app/Services/DataServices/data.service';

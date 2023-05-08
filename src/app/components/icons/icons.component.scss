@@ -26,10 +26,25 @@ img{
 }
 
 .color-menu{
+    margin: 8px;
     display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.colors{
+    width: 24px;
+    height: 24px;
+    padding: 1px;
+    border-radius: 50%;
+    border: 1px solid transparent;
 }
 
-button:hover{
+.colors:hover{
+    border: 1px black;
+    cursor: pointer;
+}
+
+.top-icons:hover{
     background-color: #d4d2d2;
 }
 

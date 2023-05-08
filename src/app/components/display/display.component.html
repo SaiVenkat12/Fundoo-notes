@@ -1,22 +1,23 @@
 <div class="display">
     <div class="displaynote">
 
-        <mat-card class="note-title" *ngFor="let note of displayallnotes | searchnote:searchText">
-            <div class="card">
-                <div (click)="openDialog(note)">
-                    <mat-card-content class="title-content">
-                        {{note.title}}
-                    </mat-card-content>
+            <mat-card class="note-title" *ngFor="let note of displayallnotes | searchnote:searchText">
+                <div class="card">
+                    <div (click)="openDialog(note)">
+                        <mat-card-content class="title-content">
+                            {{note.title}}
+                        </mat-card-content>
+        
+                        <mat-card-content class="content">
+                            {{note.description}}
+                        </mat-card-content>
+                    </div>
     
-                    <mat-card-content class="content">
-                        {{note.description}}
-                    </mat-card-content>
+                    <mat-card-actions class="icons" >
+                        <app-icons [noteinfo]="note" (refreshpageEvent)="refreshDisplaydata()"></app-icons>
+                    </mat-card-actions>
                 </div>
+            </mat-card>
 
-                <mat-card-actions class="icons" >
-                    <app-icons [noteinfo]="note" (refreshpageEvent)="refreshDisplaydata()"></app-icons>
-                </mat-card-actions>
-            </div>
-        </mat-card>
-    </div>
+        </div>
 </div>

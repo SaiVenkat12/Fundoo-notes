@@ -88,5 +88,16 @@ export class NotesService {
     return this.httpService.getService('notes/getTrashNotesList', true, httpHeadersOption)
   }
 
+  deletenotesForever(reqdata: any){
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/deleteForeverNotes', reqdata, true, httpHeadersOption)
+  }
+
 }
 
