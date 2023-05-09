@@ -13,6 +13,8 @@ export class IconsComponent implements OnInit {
 
   show: boolean = true;
 
+  color2="#f28b82";
+
   constructor(private noteservice: NotesService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -80,6 +82,17 @@ export class IconsComponent implements OnInit {
       this.snackBar.open('note archived', '', {
         duration: 2000,
       });
+    })
+  }
+
+  noteColor(bgcolor:string){
+    let reqdata = {
+      noteIdList: [this.noteinfo.id],
+      color: bgcolor,
+    }
+    this.noteservice.notebgColorChange(reqdata).subscribe((result: any) => {
+      console.log("BgColor Changed", result);
+      this.refreshpageEvent.emit(result);
     })
   }
 }

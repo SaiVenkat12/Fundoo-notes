@@ -27,12 +27,16 @@
     width: 70%;
 }
 
-.title-text{
-    width: 100%;
+input{
+    width: 65%;
     font-size: 18px;
     font-family: "Roboto",arial,sans-serif;
     border: none;
     outline: none;
+}
+
+.title-text1{
+    width: 88%;
 }
 
 .mat-mdc-card-content:first-child, .mat-mdc-card-content:last-child {
@@ -41,20 +45,32 @@
 
 .mdc-card__actions{
     padding-right: 30px;
+    gap: 32%;
     justify-content: space-between;
 }
 
 .title-content{
-    
+    width: 100%;
     display: flex;
+    padding: 8px;
 } 
 .title-icons{
     display: flex;
+    gap: 20px;
 }
 
 
 .top-icons{
-    height: 32px;
+    //height: 32px;
+    border: none;
+    border-radius: 29%;
+    background: none;
+    cursor: pointer;
+}
+
+img{
+    width: 75%;
+    height: 24px;
 }
 
 

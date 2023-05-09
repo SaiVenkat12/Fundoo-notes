@@ -2,7 +2,7 @@
     <div class="displaynote">
 
             <mat-card class="note-title" *ngFor="let note of displayallnotes | searchnote:searchText">
-                <div class="card">
+                <div class="card" [style.background-color]="note.color">
                     <div (click)="openDialog(note)">
                         <mat-card-content class="title-content">
                             {{note.title}}

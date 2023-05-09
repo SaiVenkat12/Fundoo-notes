@@ -41,24 +41,24 @@
 
     <mat-menu class="color-menu" #color="matMenu">
         <div class="color-menu" type="mat-nav-list">
-            <button class="colors">
+            <button class="colors" (click)="noteColor('#fff')">
                 <mat-icon>format_color_reset</mat-icon>
             </button>
-            <button class="colors"  style="background-color: #f28b82;"></button>
-            <button class="colors" style="background-color: #fbbc04;"></button>
-            <button class="colors" style="background-color: #fff475;"></button>
+            <button class="colors" (click)="noteColor('#f28b82')" style="background-color: #f28b82;"></button>
+            <button class="colors" (click)="noteColor('#fbbc04')" style="background-color: #fbbc04;"></button>
+            <button class="colors" (click)="noteColor('#fff475')" style="background-color: #fff475;"></button>
         </div>
         <div class="color-menu" type="mat-nav-list">
-            <button class="colors" style="background-color: #ccff90;"></button>
-            <button class="colors" style="background-color: #a7ffeb;"></button>
-            <button class="colors" style="background-color: #cbf0f8;"></button>
-            <button class="colors" style="background-color: #aecbfa;"></button>
+            <button class="colors" (click)="noteColor('#ccff90')" style="background-color: #ccff90;"></button>
+            <button class="colors" (click)="noteColor('#a7ffeb')" style="background-color: #a7ffeb;"></button>
+            <button class="colors" (click)="noteColor('#cbf0f8')" style="background-color: #cbf0f8;"></button>
+            <button class="colors" (click)="noteColor('#aecbfa')" style="background-color: #aecbfa;"></button>
         </div>
         <div class="color-menu" type="mat-nav-list">
-            <button class="colors" style="background-color: #d7aefb;"></button>
-            <button class="colors" style="background-color: #fdcfe8;"></button>
-            <button class="colors" style="background-color: #e6c9a8;"></button>
-            <button class="colors" style="background-color: #e8eaed;"></button>
+            <button class="colors" (click)="noteColor('#d7aefb')" style="background-color: #d7aefb;"></button>
+            <button class="colors" (click)="noteColor('#fdcfe8')" style="background-color: #fdcfe8;"></button>
+            <button class="colors" (click)="noteColor('#e6c9a8')" style="background-color: #e6c9a8;"></button>
+            <button class="colors" (click)="noteColor('#e8eaed')" style="background-color: #e8eaed;"></button>
         </div>
         
         

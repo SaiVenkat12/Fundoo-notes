@@ -2,7 +2,7 @@
     <div class="note">
         <mat-card class="note-title">
             <mat-card-content class="title-content" *ngIf="!show">
-                <input class="title-text" type="text" [(ngModel)]="Title" placeholder="Title">
+                <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title">
                 <div class="title-icons" *ngIf="!show">
                     <button mat-icon-button matTooltip="pin note"
                         class="top-icons"><mat-icon>push_pin</mat-icon></button>
@@ -11,17 +11,17 @@
             <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()">
                 <input class="title-text" type="text" [(ngModel)]="description" placeholder="Take a note...">
                 <div class="title-icons" *ngIf="show">
-                        <button mat-flat-button matTooltip="note with checkbox" class="top-icons">
+                        <button matTooltip="note with checkbox" class="top-icons">
                             <span>
                                 <img class="note-icons" src="../../../assets/icons/check_box_FILL0_wght400_GRAD0_opsz48.svg">
                             </span>
                         </button>
-                        <button mat-flat-button matTooltip="note with drawing" class="top-icons">
+                        <button matTooltip="note with drawing" class="top-icons">
                             <span>
                                 <img class="note-icons" src="../../../assets/icons/brush_FILL0_wght400_GRAD0_opsz48.svg">
                             </span>
                         </button>
-                        <button mat-flat-button matTooltip="note with image" class="top-icons">
+                        <button matTooltip="note with image" class="top-icons">
                             <span>
                                 <img class="note-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
                             </span>
