@@ -8,3 +8,14 @@ input{
 .note{
     min-height: 60px;
 }
+
+.icons{
+    gap: 70px;
+
+}
+
+@media only screen and (max-width: 600px){
+    .icons{
+        gap: 40px;
+    }
+}

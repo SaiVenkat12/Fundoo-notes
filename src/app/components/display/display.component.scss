@@ -2,7 +2,8 @@
     margin: 3%;
 }
 .displaynote{
-    padding-right: 12%;
+    padding-left: 2%;
+    padding-right: 5%;
    // margin-left: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -13,7 +14,7 @@
 .note-title{
     margin: 8px;
     width: 240px;
-    transform: translate(256px, 0px);
+    // transform: translate(256px, 0px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,8 +57,19 @@ img{
     
 }
 
-@media only screen and (max-width: 1100px) {
+// @media only screen and (max-width: 1100px) {
+//     .note-title{
+        
+//     }
+// }
+
+@media only screen and (max-width: 600px){
+ 
+    .displaynote{
+        justify-content: center;
+    }
+
     .note-title{
-        transform: translate(150px, 0px);
+        transform: none;
     }
 }

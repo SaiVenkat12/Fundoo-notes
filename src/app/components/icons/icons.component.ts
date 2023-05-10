@@ -8,12 +8,11 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
   styleUrls: ['./icons.component.scss']
 })
 export class IconsComponent implements OnInit {
-  @Input() noteinfo: any
+  @Input() noteinfo: any 
+  @Input() colorchange: string=''
   @Output() refreshpageEvent = new EventEmitter<any>();
 
   show: boolean = true;
-
-  color2="#f28b82";
 
   constructor(private noteservice: NotesService, private snackBar: MatSnackBar) { }
 
@@ -86,13 +85,18 @@ export class IconsComponent implements OnInit {
   }
 
   noteColor(bgcolor:string){
-    let reqdata = {
-      noteIdList: [this.noteinfo.id],
-      color: bgcolor,
+    this.colorchange=bgcolor
+    console.log(this.colorchange);
+    if(this.noteinfo!=null){
+      let reqdata = {
+        noteIdList: [this.noteinfo.id],
+        color: bgcolor,
+      }
+  
+      this.noteservice.notebgColorChange(reqdata).subscribe((result: any) => {
+        console.log("BgColor Changed", result);
+        this.refreshpageEvent.emit(result);
+      })
     }
-    this.noteservice.notebgColorChange(reqdata).subscribe((result: any) => {
-      console.log("BgColor Changed", result);
-      this.refreshpageEvent.emit(result);
-    })
   }
 }

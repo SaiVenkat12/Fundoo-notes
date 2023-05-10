@@ -1,6 +1,6 @@
 <div class="takenote">
     <div class="note">
-        <mat-card class="note-title">
+        <mat-card class="note-title" [style.background-color]="notebgcolor">
             <mat-card-content class="title-content" *ngIf="!show">
                 <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title">
                 <div class="title-icons" *ngIf="!show">
@@ -30,9 +30,9 @@
             </mat-card-content>
             <mat-card-actions *ngIf="!show">
                 <div class="icons">
-                    <app-icons></app-icons>
+                    <app-icons [colorchange]="notebgcolor" ></app-icons>
                 </div>
-                <button mat-button matTooltip="Close and Save" (click)="closenote()">Close</button>
+                <button class="closeButton" mat-button matTooltip="Close and Save" (click)="closenote()">Close</button>
             </mat-card-actions>
         </mat-card>
     </div>

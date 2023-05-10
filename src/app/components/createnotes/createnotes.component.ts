@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 })
 export class CreatenotesComponent implements OnInit {
   @Output() createnoteRefreshEvent = new EventEmitter<Object>();
+  @Input() notebgcolor:string='';
 
   Title = '';
   description = '';
@@ -15,8 +16,10 @@ export class CreatenotesComponent implements OnInit {
   show: boolean = true;
   constructor(private noteservice: NotesService) { }
   ngOnInit(): void {
-
+    console.log("color",this.notebgcolor);
+    
   }
+  
 
   showing() {
     this.show = false

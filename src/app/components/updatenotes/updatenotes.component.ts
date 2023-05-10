@@ -10,22 +10,25 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 export class UpdatenotesComponent {
   title: string;
   description: string;
+  color:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdatenotesComponent>, private noteservice: NotesService) {
     this.title = data.title;
     this.description = data.description;
+    this.color=data.color;
   }
   close() {
     let reqdata = {
       noteId: this.data.id,
       title: this.title,
       description: this.description,
+      color:this.color
     }
       this.noteservice.updatenotes(reqdata).subscribe((result: any) => {
-        console.log("data", reqdata);
-        console.log('title', this.title);
-        console.log(result.data.title);
-
-        console.log("update: ", result.data);
+        console.log(this.color);
+        
+        console.log("update: ", result);
+        console.log(result.data);
+        
         this.dialogRef.close();
       })
 

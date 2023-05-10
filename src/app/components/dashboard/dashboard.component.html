@@ -2,7 +2,9 @@
     <div class="toolbar">
         <mat-toolbar color="primary" class="example-toolbar">
             <div class="toolbar-left">
-                <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+                <div (click)="showside($event)">
+                    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+                </div>
                 <div class="app-Logo" routerLink="/home">
                     <img class="logo-img" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
                         alt="logo">
@@ -12,10 +14,10 @@
 
             <div class="searchbar-top" [ngClass]="{'searchChange': isSelected}" (click)="searchbg()">
                 <div class="searchbar">
-                    <button mat-icon-button matTooltip="search" class="top-icons">
+                    <button mat-icon-button matTooltip="search" class="top-icons" id="searchicon">
                         <mat-icon>search</mat-icon>
                     </button>
-                    <input class="searchtext" [ngClass]="{'searchChange': isSelected}" type="search" placeholder="Search"
+                    <input class="searchtext" [ngClass]="{'searchChange': isSelected}" type="text" placeholder="Search"
                         (keyup)="searchNote($event)">
                 </div>
             </div>
@@ -26,8 +28,10 @@
                         routerLink="/home"><mat-icon>refresh</mat-icon>
                     </button>
 
-                    <button mat-icon-button matTooltip="list view"
-                        class="top-icons"><mat-icon>view_agenda</mat-icon></button>
+                    <button mat-icon-button matTooltip="list view" id="viewbutton"
+                        class="top-icons"><mat-icon>view_agenda</mat-icon>
+                    </button>
+
                     <button mat-icon-button matTooltip="settings" class="top-icons"><mat-icon>settings</mat-icon>
                     </button>
                 </div>
@@ -50,7 +54,7 @@
                 <mat-nav-list>
 
                     <div class="side">
-                        <button mat-flat-button class="side-title" routerLink="notes" (click)="snav.toggle()">
+                        <button mat-flat-button class="side-title" routerLink="notes" >
                             <div class="side-button">
                                 <span>
                                     <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
@@ -101,8 +105,56 @@
         </mat-sidenav>
 
         <mat-sidenav-content>
+            <div>
+                <mat-nav-list class="side-menu2" *ngIf="show">
+                    <div class="side2" >
+                        <button class="side-title2" routerLink="notes" >
+                            <div class="side-button">
+                                <span>
+                                    <img class="side-icons" src="../../../assets/icons//lightbulb_icon.svg">
+                                </span>
+                            </div>
+                        </button>
+                    </div>
 
-            <router-outlet></router-outlet>
+                    <button color="" class="side-title2" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons"
+                                    src="../../../assets/icons/notifications_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                        </div>
+                    </button>
+
+                    <button  class="side-title2" routerLink="">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
+                            </span>
+                        </div>
+                    </button>
+
+                    <button color="" class="side-title2" routerLink="archive">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
+                            </span>
+                        </div>
+                    </button>
+
+                    <button color="" class="side-title2" routerLink="trash">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/delete_icon.svg">
+                            </span>
+                        </div>
+                    </button>
+                </mat-nav-list>
+                
+            </div>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
 
         </mat-sidenav-content>
     </mat-sidenav-container>

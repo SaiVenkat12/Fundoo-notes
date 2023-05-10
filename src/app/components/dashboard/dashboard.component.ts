@@ -12,6 +12,7 @@ export class DashboardComponent implements OnDestroy {
   
   mobileQuery: MediaQueryList;
   isSelected =false;
+  show: boolean = true;
 
   private _mobileQueryListener: () => void;
 
@@ -22,6 +23,11 @@ export class DashboardComponent implements OnDestroy {
   }
   searchbg(){
     this.isSelected=true; 
+  }
+
+  showside(e: any) {
+    //this.show = e.target.Changed;
+    this.show = !this.show;
   }
 
   searchNote(event: any) {
