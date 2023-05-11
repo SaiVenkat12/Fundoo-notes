@@ -1,15 +1,15 @@
 <div class="takenote">
     <div class="note">
-        <mat-card class="note-title" [style.background-color]="notebgcolor">
+        <mat-card class="note-title" [style.background-color]="backgroundColor">
             <mat-card-content class="title-content" *ngIf="!show">
-                <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title">
+                <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title" [style.background-color]="backgroundColor">
                 <div class="title-icons" *ngIf="!show">
                     <button mat-icon-button matTooltip="pin note"
                         class="top-icons"><mat-icon>push_pin</mat-icon></button>
                 </div>
             </mat-card-content>
-            <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()">
-                <input class="title-text" type="text" [(ngModel)]="description" placeholder="Take a note...">
+            <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()" >
+                <input class="title-text" type="text" [(ngModel)]="description" placeholder="Take a note..." [style.background-color]="backgroundColor">
                 <div class="title-icons" *ngIf="show">
                         <button matTooltip="note with checkbox" class="top-icons">
                             <span>
@@ -30,7 +30,7 @@
             </mat-card-content>
             <mat-card-actions *ngIf="!show">
                 <div class="icons">
-                    <app-icons [colorchange]="notebgcolor" ></app-icons>
+                    <app-icons (backgroundColorChanged)="onBackgroundColorChanged($event)"></app-icons>
                 </div>
                 <button class="closeButton" mat-button matTooltip="Close and Save" (click)="closenote()">Close</button>
             </mat-card-actions>

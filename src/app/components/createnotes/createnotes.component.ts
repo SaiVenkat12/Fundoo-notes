@@ -8,15 +8,20 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 })
 export class CreatenotesComponent implements OnInit {
   @Output() createnoteRefreshEvent = new EventEmitter<Object>();
-  @Input() notebgcolor:string='';
 
   Title = '';
   description = '';
+  backgroundColor='';
 
   show: boolean = true;
   constructor(private noteservice: NotesService) { }
   ngOnInit(): void {
-    console.log("color",this.notebgcolor);
+    
+  }
+
+  onBackgroundColorChanged(color: string) {
+    this.backgroundColor = color;
+    console.log(this.backgroundColor);
     
   }
   
@@ -32,6 +37,7 @@ export class CreatenotesComponent implements OnInit {
       let reqdata = {
       title: this.Title,
       description: this.description,
+      color:this.backgroundColor
     }
     console.log(reqdata);
     
@@ -42,6 +48,7 @@ export class CreatenotesComponent implements OnInit {
 
     this.Title='';
     this.description='';
+    this.backgroundColor='';
     this.show = true;
     
     }

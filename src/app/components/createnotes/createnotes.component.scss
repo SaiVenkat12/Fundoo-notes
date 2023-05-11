@@ -80,7 +80,12 @@ img{
     width: 100%;
     display: flex;
     justify-content: center;
-    
+}
+
+@media only screen and (max-width: 950px) {
+    .note-title{
+        width: 80%;
+    }
 }
 
 @media only screen and (max-width: 600px){

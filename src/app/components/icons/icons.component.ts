@@ -11,6 +11,7 @@ export class IconsComponent implements OnInit {
   @Input() noteinfo: any 
   @Input() colorchange: string=''
   @Output() refreshpageEvent = new EventEmitter<any>();
+  @Output() backgroundColorChanged = new EventEmitter<string>();
 
   show: boolean = true;
 
@@ -84,9 +85,14 @@ export class IconsComponent implements OnInit {
     })
   }
 
+
+
+
   noteColor(bgcolor:string){
-    this.colorchange=bgcolor
+    this.colorchange=bgcolor;
     console.log(this.colorchange);
+    this.backgroundColorChanged.emit(this.colorchange);
+
     if(this.noteinfo!=null){
       let reqdata = {
         noteIdList: [this.noteinfo.id],

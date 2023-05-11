@@ -16,15 +16,21 @@ export class UpdatenotesComponent {
     this.description = data.description;
     this.color=data.color;
   }
+
+  onBackgroundColorChanged(bgcolor: string) {
+    this.color= bgcolor;
+    
+  }
+
   close() {
     let reqdata = {
       noteId: this.data.id,
       title: this.title,
       description: this.description,
-      color:this.color
+      color:this.color,
     }
       this.noteservice.updatenotes(reqdata).subscribe((result: any) => {
-        console.log(this.color);
+        console.log(reqdata.color);
         
         console.log("update: ", result);
         console.log(result.data);

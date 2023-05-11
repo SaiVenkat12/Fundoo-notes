@@ -28,7 +28,7 @@ export class DisplayComponent implements OnInit {
     const dialogRef = this.dialog.open(UpdatenotesComponent, { data: note, });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("Dialog result:",result);
+      //console.log("Dialog result:",result);
        this.updatenoteEvent.emit();
     });
   }

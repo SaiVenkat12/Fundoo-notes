@@ -57,11 +57,38 @@ img{
     
 }
 
-// @media only screen and (max-width: 1100px) {
-//     .note-title{
-        
-//     }
-// }
+@media only screen and (max-width: 950px) {
+
+    .displaynote{
+        margin-left: 5%;
+        justify-content: center;
+    }
+
+    .note-title{
+        width: 300px;
+        transform: none;
+    }
+
+    .card{
+        max-width: 100%;
+    }
+
+    .icons2{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .note-title{
+        width: 281px;
+    }
+}
+
+@media only screen and (max-width: 770px){
+    .note-title{
+        width: 260px;
+    }
+}
 
 @media only screen and (max-width: 600px){
  
@@ -70,6 +97,15 @@ img{
     }
 
     .note-title{
+        width: 100%;
         transform: none;
+    }
+
+    .card{
+        max-width: 100%;
+    }
+
+    .icons2{
+        width: 100%;
     }
 }

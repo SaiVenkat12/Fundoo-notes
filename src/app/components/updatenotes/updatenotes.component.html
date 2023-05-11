@@ -7,7 +7,7 @@
             <input class="note" type="text" [(ngModel)]="description" placeholder="note" [style.background-color]="color">
         </mat-card-content>
         <mat-card-actions class="icons">
-            <app-icons></app-icons>
+            <app-icons (backgroundColorChanged)="onBackgroundColorChanged($event)"></app-icons>
             <button mat-button matTooltip="Close and Save" (click)="close()" [style.background-color]="color">Close</button>
         </mat-card-actions>
     </mat-card>
