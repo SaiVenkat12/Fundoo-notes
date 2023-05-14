@@ -65,7 +65,7 @@ img{
     }
 
     .note-title{
-        width: 300px;
+        width: 319px;
         transform: none;
     }
 
@@ -87,6 +87,12 @@ img{
 @media only screen and (max-width: 770px){
     .note-title{
         width: 260px;
+    }
+}
+@media only screen and (max-width: 720px){
+    .displaynote{
+        margin-left: -2%;
+        justify-content: center;
     }
 }
 

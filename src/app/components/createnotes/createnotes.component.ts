@@ -54,6 +54,7 @@ export class CreatenotesComponent implements OnInit {
     }
     else{
       this.show = true;
+      this.backgroundColor='';
       console.log("no data");
       
     }
