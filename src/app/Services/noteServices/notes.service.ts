@@ -88,7 +88,7 @@ export class NotesService {
     return this.httpService.getService('notes/getTrashNotesList', true, httpHeadersOption)
   }
 
-  deletenotesForever(reqdata: any){
+  deletenotesForever(reqdata: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
       headers: new HttpHeaders({
@@ -99,7 +99,7 @@ export class NotesService {
     return this.httpService.postService('notes/deleteForeverNotes', reqdata, true, httpHeadersOption)
   }
 
-  notebgColorChange(reqdata:any){
+  notebgColorChange(reqdata: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
       headers: new HttpHeaders({
@@ -108,6 +108,51 @@ export class NotesService {
       })
     }
     return this.httpService.postService('notes/changesColorNotes', reqdata, true, httpHeadersOption)
+  }
+
+  getNoteLabels() {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.getService('noteLabels/getNoteLabelList', true, httpHeadersOption)
+  }
+
+  createNoteLabels(reqdata: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('noteLabels', reqdata, true, httpHeadersOption)
+  }
+
+
+  deleteNoteLabels(id:any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.deleteService("noteLabels/"+id+"/deleteNoteLabel",true, httpHeadersOption)
+  }
+
+  updateNoteLabels(reqdata: any,id:any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('noteLabels/'+id+'/updateNoteLabel', reqdata, true, httpHeadersOption)
   }
 
 }

@@ -39,6 +39,12 @@
         <button mat-menu-item>copy to google docs</button>
     </mat-menu>
 
+    <mat-menu class="label-menu" #label="matMenu">
+        <div>Label note
+            <div></div>
+        </div>
+    </mat-menu>
+
     <mat-menu class="color-menu" #color="matMenu">
         <div class="color-menu" type="mat-nav-list">
             <button class="colors" (click)="noteColor('#fff')">

@@ -60,4 +60,14 @@ export class UserService {
     return this.httpService.postService("user/reset-password", reqdata, true, httpHeadersOption)
   }
 
+  getUserId(){
+    let httpHeadersOption = {
+      headers : new HttpHeaders({ 
+        contentType : 'application/json',
+        authorization : this.token
+      })
+    }
+    return this.httpService.getService("user",true,httpHeadersOption)
+  }
+
 }

@@ -1,0 +1,28 @@
+<mat-card class="Card">
+    <div class="content-div">
+        <mat-card-title class="edit-Title">Edit Labels</mat-card-title>
+        <mat-card-content class="edit-Content">
+            <div class="label-feild">
+                <mat-icon class="icons" (click)="clear()">close</mat-icon>
+                <input placeholder="Create new label" [(ngModel)]="newTitle">
+            </div>
+
+            <div class="label-feild" *ngFor="let labels of labelArray">
+                <div class="suffix">
+                    <mat-icon class="icons" *ngIf="!labels.showIcon" (mouseenter)="labels.showIcon = true">label</mat-icon>
+                    <mat-icon class="icons" *ngIf="labels.showIcon" (mouseleave)="labels.showIcon = false"
+                        (click)="delete(labels.id,labels)">delete</mat-icon>
+
+                    <input placeholder="Edit label" [(ngModel)]="labels.label" (click)="labels.show = true">
+
+                    <mat-icon class="icons" (click)="labels.show = true" *ngIf="!labels.show">edit</mat-icon>
+                    <mat-icon class="icons" (click)="editLabel(labels.id,labels.label)" *ngIf="labels.show">done</mat-icon>
+                </div>
+            </div>
+        </mat-card-content>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-card-actions class="actions">
+        <button mat-button (click)="submit()">Done</button>
+    </mat-card-actions>
+</mat-card>

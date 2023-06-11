@@ -35,6 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { TrashComponent } from './components/trash/trash.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { SearchnotePipe } from './Pipes/filterPipe/searchnote.pipe';
+import { EditLabelComponent } from './components/edit-label/edit-label.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SearchnotePipe } from './Pipes/filterPipe/searchnote.pipe';
     TrashComponent,
     ArchiveComponent,
     SearchnotePipe,
+    EditLabelComponent,
   ],
   imports: [
     BrowserModule,

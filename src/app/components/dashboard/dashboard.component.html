@@ -74,7 +74,16 @@
                         </div>
                     </button>
 
-                    <button mat-flat-button class="side-title" routerLink="">
+                    <button mat-flat-button class="side-title" *ngFor="let label of labels">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/label_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                            <h3 mat-list-item>{{label.label}}</h3>
+                        </div>
+                    </button>
+
+                    <button mat-flat-button class="side-title" (click)="openDialog()">
                         <div class="side-button">
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
@@ -126,7 +135,15 @@
                         </div>
                     </button>
 
-                    <button class="side-title2" routerLink="">
+                    <button class="side-title2" (click)="openDialog()" *ngFor="let label of labels">
+                        <div class="side-button">
+                            <span>
+                                <img class="side-icons" src="../../../assets/icons/label_FILL0_wght400_GRAD0_opsz48.svg">
+                            </span>
+                        </div>
+                    </button>
+
+                    <button class="side-title2" (click)="openDialog()">
                         <div class="side-button">
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/edit_icon.svg">
