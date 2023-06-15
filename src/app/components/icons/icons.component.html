@@ -1,9 +1,49 @@
 <div class="title-icons" *ngIf="show">
-    <button matTooltip="Remind me" class="top-icons">
+    <button matTooltip="Remind me" class="top-icons" [matMenuTriggerFor]="reminder" #menuTrigger="matMenuTrigger">
         <span>
             <img class="side-icons" src="../../../assets/icons/add_alert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
+    <mat-menu class="reminder-menu" #reminder="matMenu">
+        <div class="remind-Menu">Reminder
+            <button mat-menu-item class="remind-btns" (click)="AddNoteReminder()">
+                <div class="remind-item">
+                    <span> Tommrow </span>
+                    <span> 8:00AM </span>
+                </div>
+            </button>
+
+            <button mat-menu-item class="remind-btns">
+                <div class="remind-item">
+                    <span> Next Week </span>
+                    <span> Mon,8:00AM </span>
+                </div>
+            </button>
+
+            <button mat-menu-item class="remind-btns">
+                <div class="remind-item-icons">
+                    <span>
+                        <img class="remind-icons" src="../../../assets/icons/schedule_FILL0_wght400_GRAD0_opsz48.png"
+                            alt="Schedule">
+                    </span>
+                    <span> Pick date & time </span>
+                </div>
+                
+            </button>
+
+            <button mat-menu-item class="remind-btns">
+                <div class="remind-item-icons">
+                    <span>
+                        <img class="remind-icons" src="../../../assets/icons/location_on_FILL1_wght400_GRAD0_opsz48.svg"
+                            alt="location">
+                    </span>
+                    <span> Pick place </span>
+                </div>
+                
+            </button>
+        </div>
+    </mat-menu>
+
     <button matTooltip="collabrator" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
@@ -24,24 +64,32 @@
             <img class="side-icons" src="../../../assets/icons/archive_icon.svg">
         </span>
     </button>
-    <button [matMenuTriggerFor]="menu" matTooltip="more" class="top-icons">
+    <button [matMenuTriggerFor]="menu" matTooltip="more" class="top-icons" (menuOpened)="onMenuOpened()">
         <span>
             <img class="side-icons" src="../../../assets/icons/more_vert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
 
-    <mat-menu class="more-menu" #menu="matMenu">
+    <mat-menu class="more-menu" #menu="matMenu" (click)="$event.stopPropagation()">
         <button mat-menu-item (click)="Delete()">Delete note</button>
-        <button mat-menu-item>Add label</button>
+        <button mat-menu-item [matMenuTriggerFor]="label" #menuTrigger="matMenuTrigger" (menuClosed)="onMenuClosed()"
+            (click)="$event.stopPropagation()" >Add label</button>
+        <!-- #menuTrigger="matMenuTrigger" (menuClosed)="menuTrigger.openMenu()" 
+        (menuOpened)="keepMenuOpen = true"-->
         <button mat-menu-item>Add drwaing</button>
         <button mat-menu-item>Make a copy</button>
         <button mat-menu-item>show checkboxs</button>
         <button mat-menu-item>copy to google docs</button>
     </mat-menu>
 
-    <mat-menu class="label-menu" #label="matMenu">
-        <div>Label note
-            <div></div>
+    <mat-menu class="label-menu" #label="matMenu" (click)="$event.stopPropagation()" >
+
+        <div class="label-Radio" (click)="$event.stopPropagation()">Label note
+            <input class="search-input" placeholder="Enter the Label" type="search" (keyup)="searchLabel($event)">
+            <div *ngFor="let labels of labelArray">
+                <mat-checkbox class="check-btn" (click)="selectLabel($event,labels.id)" [checked]="checkedLabels.includes(labels.id)">{{labels.label}}</mat-checkbox>7
+
+            </div>
         </div>
     </mat-menu>
 
@@ -66,24 +114,16 @@
             <button class="colors" (click)="noteColor('#e6c9a8')" style="background-color: #e6c9a8;"></button>
             <button class="colors" (click)="noteColor('#e8eaed')" style="background-color: #e8eaed;"></button>
         </div>
-        
-        
     </mat-menu>
-</div>
-
-
-
-
-
-<div class="title-icons" *ngIf="!show">
-    <button matTooltip="Delete Forever" (click)="deleteForver()" class="top-icons">
-        <span>
-            <img class="side-icons" src="../../../assets/icons/delete_forever_FILL0_wght400_GRAD0_opsz48.svg">
-        </span>
-    </button>
-    <button matTooltip="restore" (click)="restore()" class="top-icons" >
-        <span>
-            <img class="side-icons" src="../../../assets/icons/restore_from_trash_FILL0_wght400_GRAD0_opsz48.svg">
-        </span>
-    </button>
-</div>
+    <div class="title-icons" *ngIf="!show">
+        <button matTooltip="Delete Forever" (click)="deleteForver()" class="top-icons">
+            <span>
+                <img class="side-icons" src="../../../assets/icons/delete_forever_FILL0_wght400_GRAD0_opsz48.svg">
+            </span>
+        </button>
+        <button matTooltip="restore" (click)="restore()" class="top-icons">
+            <span>
+                <img class="side-icons" src="../../../assets/icons/restore_from_trash_FILL0_wght400_GRAD0_opsz48.svg">
+            </span>
+        </button>
+    </div>

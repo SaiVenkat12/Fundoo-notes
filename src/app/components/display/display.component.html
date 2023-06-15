@@ -1,22 +1,36 @@
 <div class="display">
     <div class="displaynote">
 
-            <mat-card class="note-title" *ngFor="let note of displayallnotes | searchnote:searchText">
-                <div class="card" [style.background-color]="note.color">
-                    <div (click)="openDialog(note)">
-                        <mat-card-content class="title-content">
-                            {{note.title}}
-                        </mat-card-content>
-        
-                        <mat-card-content class="content">
-                            {{note.description}}
-                        </mat-card-content>
-                    </div>
-    
-                    <mat-card-actions class="icons" >
-                        <app-icons class="icons2" [noteinfo]="note" (refreshpageEvent)="refreshDisplaydata()"></app-icons>
-                    </mat-card-actions>
+        <mat-card class="note-title" *ngFor="let note of displayallnotes | searchnote:searchText">
+            <div class="card" [style.background-color]="note.color">
+                <div (click)="openDialog(note)">
+                    <mat-card-content class="title-content">
+                        {{note.title}}
+                    </mat-card-content>
+
+                    <mat-card-content class="content">
+                        {{note.description}}
+                    </mat-card-content>
+                    <mat-chip-option class="chips"  (mouseenter)="note.showIcon = true" (mouseleave)="note.showIcon = false" style="background-color: rgba(0,0,0,.08);"
+                    (removed)="removeReminder()">
+                        {{note.reminder}}
+                        <button matChipRemove [attr.aria-label]="'remove ' + note.id"  *ngIf="note.showIcon" >
+                            <mat-icon >cancel</mat-icon>
+                        </button>
+                    </mat-chip-option>
+                    <mat-chip-option class="chips" *ngFor="let label of note.noteLabels" (mouseenter)="label.showIcon = true" (mouseleave)="label.showIcon = false" style="background-color: rgba(0,0,0,.08);"
+                    (removed)="remove(label.id,note.id)">
+                        {{label.label}}
+                        <button matChipRemove [attr.aria-label]="'remove ' + label.id"  *ngIf="label.showIcon" >
+                            <mat-icon >cancel</mat-icon>
+                        </button>
+                    </mat-chip-option>
                 </div>
-            </mat-card>
-        </div>
+
+                <mat-card-actions class="icons">
+                    <app-icons class="icons2" [noteinfo]="note" (refreshpageEvent)="refreshDisplaydata()"></app-icons>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+    </div>
 </div>

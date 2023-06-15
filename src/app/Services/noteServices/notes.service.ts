@@ -155,5 +155,49 @@ export class NotesService {
     return this.httpService.postService('noteLabels/'+id+'/updateNoteLabel', reqdata, true, httpHeadersOption)
   }
 
+  addLabeltoNotes(notesId:any,LabelId:any){
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+  }
+  return this.httpService.postService('notes/'+notesId+'/addLabelToNotes/'+LabelId+'/add','', true, httpHeadersOption)
+}
+
+removeLabelToNotes(notesId:any,LabelId:any){
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+}
+return this.httpService.postService('notes/'+notesId+'/addLabelToNotes/'+LabelId+'/remove','', true, httpHeadersOption)
+}
+
+AddReminder(reqdata: any) {
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+  }
+  return this.httpService.postService('notes/addUpdateReminderNotes', reqdata, true, httpHeadersOption)
+}
+
+getReminderNotes(){
+  this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.getService('notes/getReminderNotesList', true, httpHeadersOption)
+}
+
 }
 

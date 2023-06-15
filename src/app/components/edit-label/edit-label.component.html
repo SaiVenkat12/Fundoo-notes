@@ -4,19 +4,19 @@
         <mat-card-content class="edit-Content">
             <div class="label-feild">
                 <mat-icon class="icons" (click)="clear()">close</mat-icon>
-                <input placeholder="Create new label" [(ngModel)]="newTitle">
+                <input class="create-input" (keyup)="done($event)" placeholder="Create new label" [(ngModel)]="newTitle">
+                <mat-icon class="icons" (click)="createLabel()"  *ngIf="!show" (click)="show=true">done</mat-icon>
             </div>
 
-            <div class="label-feild" *ngFor="let labels of labelArray">
+            <div class="label-feild" *ngFor="let labels of labelArray; let i = index">
                 <div class="suffix">
                     <mat-icon class="icons" *ngIf="!labels.showIcon" (mouseenter)="labels.showIcon = true">label</mat-icon>
                     <mat-icon class="icons" *ngIf="labels.showIcon" (mouseleave)="labels.showIcon = false"
                         (click)="delete(labels.id,labels)">delete</mat-icon>
 
-                    <input placeholder="Edit label" [(ngModel)]="labels.label" (click)="labels.show = true">
-
-                    <mat-icon class="icons" (click)="labels.show = true" *ngIf="!labels.show">edit</mat-icon>
-                    <mat-icon class="icons" (click)="editLabel(labels.id,labels.label)" *ngIf="labels.show">done</mat-icon>
+                        <input placeholder="Edit label" [(ngModel)]="labels.label" [class.selected]="changeIndex === i" (click)="change(i)" (click)="labels.show = true"> 
+                    <mat-icon class="icons" (click)="change(i)" *ngIf="changeIndex !==i">edit</mat-icon>
+                    <mat-icon class="icons" (click)="editLabel(labels.id,labels.label)" (click)="changeIndex =-1" *ngIf="changeIndex ===i">done</mat-icon>
                 </div>
             </div>
         </mat-card-content>

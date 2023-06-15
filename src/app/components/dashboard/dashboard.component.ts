@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.labels=res.data.details;
       console.log("labels",res);
       console.log(this.labels);
-      
+      this.dataService.sendLabelsData(this.labels)
       
     })
   }
@@ -64,10 +64,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log("all Labels");
         this.getAllLabels()
         this.labels=res;
-        //dialogRef.afterClosed()
-      //this.openDialog()
-      //const dialogRef = this.dialog.open(EditLabelComponent, {data:res});
       });
+      dialogRef.componentInstance.onCreate.subscribe((res:any)=>{
+        console.log("all Labels");
+          this.getAllLabels()
+        });
 
     dialogRef.afterClosed().subscribe((result) => {
       this.getAllLabels()

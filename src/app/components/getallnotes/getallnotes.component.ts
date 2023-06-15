@@ -12,7 +12,9 @@ export class GetallnotesComponent implements OnInit {
   constructor(private noteservice: NotesService) { }
   ngOnInit(){
     this.getall()
+    this.getRemiders()
   }
+  
   getrefreshEvent(eventdata:any){
     this.allnotes.unshift(eventdata);
     console.log("refresh data");
@@ -28,5 +30,10 @@ export class GetallnotesComponent implements OnInit {
     })
   }
   
-
+  getRemiders(){
+   this.noteservice.getReminderNotes().subscribe((res:any)=>{
+    console.log("reminder",res);
+    
+   }) 
+  }
 }

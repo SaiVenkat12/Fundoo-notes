@@ -15,10 +15,12 @@ export class EditLabelComponent implements OnInit {
   newTitle: any;
   labelArray: any=[];
   id: any;
-  //show: boolean = true;
+  show: boolean = true;
+  changeIndex:number=-1;
  // showIcon:boolean=false;
 
   @Output() onDelete = new EventEmitter<any>;
+  @Output() onCreate = new EventEmitter<any>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditLabelComponent>,
     private noteService: NotesService, private userService: UserService, private dataService: DataService) {
@@ -30,14 +32,30 @@ export class EditLabelComponent implements OnInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId')
     console.log(this.userId);
-
+    if(this.newTitle!=undefined){
+      this.show=!this.show
+      console.log(this.newTitle);
+    }else{
+      console.log(this.newTitle);
+    }
+    
   }
 
   clear(){
     this.newTitle="";
+    this.show=true;
   }
 
-  submit() {
+  done(event:any){
+    let text=event.target.value
+    if(text!=""){
+      this.show=false;
+    }else{
+      this.show=true;
+    }
+  }
+
+  createLabel(){
     let reqdata = {
       label: this.newTitle,
       isDeleted: false,
@@ -48,8 +66,24 @@ export class EditLabelComponent implements OnInit {
     if(this.newTitle!=undefined){
       this.noteService.createNoteLabels(reqdata).subscribe((res: any) => {
         console.log("create", res);
+        this.data.push(reqdata);
+        console.log("data",this.data);
+        this.onCreate.emit();
+        this.newTitle="";
+        console.log("create",this.data);
+        
       })
     }
+  }
+  
+  change(index:any){
+    console.log(index,"index");
+    
+this.changeIndex=index;
+  }
+
+  submit() {
+    this.createLabel();
     this.dialogRef.close();
   }
 

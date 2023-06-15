@@ -15,6 +15,10 @@ import { GetallnotesComponent } from './components/getallnotes/getallnotes.compo
 import { DisplayComponent } from './components/display/display.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { UpdatenotesComponent } from './components/updatenotes/updatenotes.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { SearchnotePipe } from './Pipes/filterPipe/searchnote.pipe';
+import { EditLabelComponent } from './components/edit-label/edit-label.component';
 
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,10 +36,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
-import { TrashComponent } from './components/trash/trash.component';
-import { ArchiveComponent } from './components/archive/archive.component';
-import { SearchnotePipe } from './Pipes/filterPipe/searchnote.pipe';
-import { EditLabelComponent } from './components/edit-label/edit-label.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +79,8 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
     MatTooltipModule,
     MatDialogModule,
     MatMenuModule,
+    MatRadioModule,
+    MatChipsModule,
     
   ],
   providers: [],
