@@ -199,5 +199,29 @@ getReminderNotes(){
     return this.httpService.getService('notes/getReminderNotesList', true, httpHeadersOption)
 }
 
+removeReminder(reqdata: any) {
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+  }
+  return this.httpService.postService('notes/removeReminderNotes', reqdata, true, httpHeadersOption)
 }
+
+addCollabrator(reqdata: any,id:any) {
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+  }
+  return this.httpService.postService('notes/'+id+'/AddcollaboratorsNotes', reqdata, true, httpHeadersOption)
+}
+
+}
+
+
 

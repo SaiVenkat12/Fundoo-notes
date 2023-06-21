@@ -4,23 +4,30 @@
             <img class="side-icons" src="../../../assets/icons/add_alert_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <mat-menu class="reminder-menu" #reminder="matMenu">
+
+    <mat-menu class="reminder-menu" #reminder="matMenu" (click)="$event.stopPropagation()" >
         <div class="remind-Menu">Reminder
-            <button mat-menu-item class="remind-btns" (click)="AddNoteReminder()">
+            <button mat-menu-item class="remind-btns" (click)=" setDate(0)" *ngIf="isRemind">
+                <div class="remind-item">
+                    <span> Later Today</span>
+                    <span> 8:00PM </span>
+                </div>
+            </button>
+            <button mat-menu-item class="remind-btns" (click)="setDate(1)">
                 <div class="remind-item">
                     <span> Tommrow </span>
                     <span> 8:00AM </span>
                 </div>
             </button>
 
-            <button mat-menu-item class="remind-btns">
+            <button mat-menu-item class="remind-btns" (click)="setDate(daysUntilNextMonday)">
                 <div class="remind-item">
                     <span> Next Week </span>
                     <span> Mon,8:00AM </span>
                 </div>
             </button>
 
-            <button mat-menu-item class="remind-btns">
+            <button mat-menu-item class="remind-btns" [matMenuTriggerFor]="dateTime" #menuTrigger="matMenuTrigger" >
                 <div class="remind-item-icons">
                     <span>
                         <img class="remind-icons" src="../../../assets/icons/schedule_FILL0_wght400_GRAD0_opsz48.png"
@@ -43,8 +50,90 @@
             </button>
         </div>
     </mat-menu>
+    <mat-menu class="date-menu" #dateTime="matMenu" (click)="$event.stopPropagation()" [hasBackdrop]="false"[overlapTrigger]="false">
+        <div mat-menu-item>
+            
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker3" [value]="date" [(ngModel)]="selectDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <div class="selectLabel" (click)="$event.stopPropagation()">
+            <mat-form-field class="options" >
+                <input matInput  *ngIf="showOptions" type="time" [(ngModel)]="remindTime" >
+                <mat-select value="8:00AM" *ngIf="!showOptions" [(ngModel)]="remindTime2">
+                <!-- <mat-select value="8:00AM"> -->
+                  <mat-option [value]="8">
+                    <div class="remind-item">
+                        <span> Morning </span>
+                        <span> 8:00AM </span>
+                    </div>
+                  </mat-option>
+                  <mat-option [value]="13">
+                    <div class="remind-item">
+                        <span> Afternoon </span>
+                        <span> 1:00PM </span>
+                    </div>
+                  </mat-option>
+                  <mat-option [value]="18">
+                    <div class="remind-item">
+                        <span> Evening </span>
+                        <span> 6:00PM </span>
+                    </div>
+                  </mat-option>
+                  <mat-option [value]="20">
+                    <div class="remind-item">
+                        <span> Night </span>
+                        <span> 8:00PM </span>
+                    </div>
+                  </mat-option>
+                  <mat-option >
+                    <div class="remind-item" (click)="toggleOptions()">
+                        <span> custom </span>
+                    </div>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="selectLabel" (click)="$event.stopPropagation()">
+            <mat-form-field class="options">
+                <mat-select value="Do not repeat">
+                  <mat-option value="Do not repeat">
+                    <div class="remind-item">
+                        <span> Do not repeat </span>
+                    </div>
+                  </mat-option>
+                  <mat-option value="1:00PM">
+                    <div class="remind-item">
+                        <span> Daily </span>
+                    </div>
+                  </mat-option>
+                  <mat-option value="6:00PM">
+                    <div class="remind-item">
+                        <span> Monthly </span>
+                    </div>
+                  </mat-option>
+                  <mat-option value="1:00PM">
+                    <div class="remind-item">
+                        <span> yearly </span>
+                    </div>
+                  </mat-option>
+                  <mat-option value="1:00PM">
+                    <div class="remind-item">
+                        <span> custom </span>
+                    </div>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="save-btn">
+            <button mat-button (click)="AddNoteReminder()">Save</button>
+        </div>
+        
+    </mat-menu>
 
-    <button matTooltip="collabrator" class="top-icons">
+    <button matTooltip="collabrator" class="top-icons" (click)="openDialog()">
         <span>
             <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
@@ -73,9 +162,8 @@
     <mat-menu class="more-menu" #menu="matMenu" (click)="$event.stopPropagation()">
         <button mat-menu-item (click)="Delete()">Delete note</button>
         <button mat-menu-item [matMenuTriggerFor]="label" #menuTrigger="matMenuTrigger" (menuClosed)="onMenuClosed()"
-            (click)="$event.stopPropagation()" >Add label</button>
-        <!-- #menuTrigger="matMenuTrigger" (menuClosed)="menuTrigger.openMenu()" 
-        (menuOpened)="keepMenuOpen = true"-->
+            (click)="$event.stopPropagation()" > {{labelTitle?'Add label':'change label'}}</button>
+
         <button mat-menu-item>Add drwaing</button>
         <button mat-menu-item>Make a copy</button>
         <button mat-menu-item>show checkboxs</button>

@@ -32,7 +32,7 @@ export class GetallnotesComponent implements OnInit {
   
   getRemiders(){
    this.noteservice.getReminderNotes().subscribe((res:any)=>{
-    console.log("reminder",res);
+    console.log(res.data.data);
     
    }) 
   }

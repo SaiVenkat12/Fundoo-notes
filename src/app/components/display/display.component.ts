@@ -14,15 +14,34 @@ export class DisplayComponent implements OnInit {
   @Output() updatenoteEvent = new EventEmitter<Object>();
   @Input() displayallnotes: any
 
+
   title: any
   description: any
   searchText:any
-  
+  excludedData = 'GMT+0000 (UTC)';
     
     constructor(public dialog: MatDialog, private dataService:DataService,private noteservice: NotesService) { }
 
   ngOnInit(): void {
         this.displaySearchresults()
+        var gmtTimes = ["2023-06-19T10:00:00Z", "2023-06-19T15:30:00Z", "2023-06-19T18:45:00Z"];
+
+// Function to convert GMT time to IST
+function convertGMTtoIST(gmtTime:any) {
+  var date = new Date(gmtTime);
+  date.setHours(date.getHours() + 5); // Add 5 hours
+  date.setMinutes(date.getMinutes() + 30); // Add 30 minutes
+  return date;
+}
+
+// Convert each GMT time in the array to IST
+var istTimes = gmtTimes.map(function(gmtTime) {
+  return convertGMTtoIST(gmtTime);
+});
+
+// Display the converted IST times
+console.log("GMT times:", gmtTimes);
+console.log("IST times:", istTimes);
   }  
 
 
@@ -51,8 +70,15 @@ export class DisplayComponent implements OnInit {
     })
   }
 
-  removeReminder(){
-    
+  removeReminder(Id:any,reminder:any){
+    let reqdata = {
+      noteIdList: [Id],
+      //reminder:reminder
+    }
+    this.noteservice.removeReminder(reqdata).subscribe((res:any)=>{
+      console.log(res,"removed");
+      this.updatenoteEvent.emit();
+    })
   }
 
   refreshDisplaydata(){

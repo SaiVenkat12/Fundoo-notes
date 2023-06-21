@@ -11,9 +11,9 @@
                     <mat-card-content class="content">
                         {{note.description}}
                     </mat-card-content>
-                    <mat-chip-option class="chips"  (mouseenter)="note.showIcon = true" (mouseleave)="note.showIcon = false" style="background-color: rgba(0,0,0,.08);"
-                    (removed)="removeReminder()">
-                        {{note.reminder}}
+                    <mat-chip-option class="chips" *ngFor="let remind of note.reminder"  (mouseenter)="note.showIcon = true" (mouseleave)="note.showIcon = false" style="background-color: rgba(0,0,0,.08);"
+                    (removed)="removeReminder(note.id,note.reminder)">
+                        {{((note.reminder).toString()).replace(excludedData, '')}}
                         <button matChipRemove [attr.aria-label]="'remove ' + note.id"  *ngIf="note.showIcon" >
                             <mat-icon >cancel</mat-icon>
                         </button>

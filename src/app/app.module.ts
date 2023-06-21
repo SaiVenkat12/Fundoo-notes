@@ -20,7 +20,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { SearchnotePipe } from './Pipes/filterPipe/searchnote.pipe';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -28,16 +28,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import {  OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { OwlDateTimeModule } from 'ng-pick-datetime';
+import { CollabratorComponent } from './collabrator/collabrator.component';
 
 
 @NgModule({
@@ -57,20 +63,21 @@ import {MatChipsModule} from '@angular/material/chips';
     ArchiveComponent,
     SearchnotePipe,
     EditLabelComponent,
+    CollabratorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 
+    HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
     MatSnackBarModule,
-    HttpClientModule,
-    ReactiveFormsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
@@ -81,7 +88,12 @@ import {MatChipsModule} from '@angular/material/chips';
     MatMenuModule,
     MatRadioModule,
     MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
