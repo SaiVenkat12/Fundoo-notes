@@ -1,0 +1,51 @@
+<mat-card class="Card">
+
+    <mat-card-title class="c-Title">Collaborators</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="Content">
+        <div class="collab-info">
+            <div class="User">
+                <div class="logo">{{(noteData.user.firstName).charAt(0)}}</div>
+                <div class="info">
+                    <span>{{noteData.user.firstName}} {{noteData.user.lastName}} (owner)</span>
+                    <mat-card-subtitle>{{noteData.user.email}}</mat-card-subtitle>
+                </div>
+            </div>
+            <div class="users" *ngFor="let user of collabData">
+                <div class="User" (mouseenter)="user.showClose = false" (mouseleave)="user.showClose = true">
+                    <div class="logo">{{(user.firstName).charAt(0)}}</div>
+                    <div class="info">
+                        <span>{{user.firstName}} {{user.lastName}}</span>
+                        <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+                    </div>
+                </div>
+                <mat-icon class="icons" (click)="deleteUser(user)">close</mat-icon>
+            </div>
+            <div class="users">
+                <div class="add">
+                    <mat-icon class="icon">person_add</mat-icon>
+                    <div class="input-div">
+                        <input placeholder="person or email to share with" (keyup)="done($event)"
+                            [(ngModel)]="searchWord">
+                    </div>
+                </div>
+                <mat-icon class="icons" *ngIf="!show" (click)="addUser()">done</mat-icon>
+            </div>
+        </div>
+
+        <div class="search-box" *ngIf="showSearch">
+            <div class="searchDisplay" *ngFor="let data of userData" (click)="selectEmail(data.email,data)">
+                <span>{{data.firstName}} {{data.lastName}}</span>
+                <span>
+                    <{{data.email}}>
+                </span>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="btns">
+        <div>
+            <button mat-button (click)="cancel()">Cancel</button>
+            <button mat-button (click)="submit()">Save</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

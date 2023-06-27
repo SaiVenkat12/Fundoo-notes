@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/Services/DataServices/data.service';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
-import { CollabratorComponent } from 'src/app/collabrator/collabrator.component';
+import { CollabratorComponent } from '../collabrator/collabrator.component';
 import { MatDialog,MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 
@@ -58,9 +58,16 @@ export class IconsComponent implements OnInit {
   toggleOptions() {
     this.showOptions = !this.showOptions;
   }
+  open(){
+    console.log(this.noteinfo);
+  }
 
   openDialog(){
-    const dialogRef = this.dialog.open(CollabratorComponent, {});
+    const dialogRef = this.dialog.open(CollabratorComponent, {data:this.noteinfo});
+    dialogRef.afterClosed().subscribe((result) => {
+      this.refreshpageEvent.emit();
+    });
+    
   }
 
   setDate(noOfDays: any) {

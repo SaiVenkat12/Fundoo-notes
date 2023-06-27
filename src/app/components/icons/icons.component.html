@@ -133,8 +133,8 @@
         
     </mat-menu>
 
-    <button matTooltip="collabrator" class="top-icons" (click)="openDialog()">
-        <span>
+    <button matTooltip="collabrator" class="top-icons" (click)="openDialog()" (click)="open()">
+        <span (click)="openDialog()">
             <img class="side-icons" src="../../../assets/icons/person_add_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
@@ -143,7 +143,7 @@
             <img class="side-icons" src="../../../assets/icons/palette_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button matTooltip="add image" class="top-icons">
+    <button matTooltip="add image" class="top-icons" >
         <span>
             <img class="side-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
         </span>

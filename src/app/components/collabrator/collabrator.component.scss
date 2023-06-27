@@ -1,0 +1,112 @@
+.Card{
+    min-width: 580px;
+    min-height: 260px;
+    padding: 15px 15px 0;
+}
+
+.Content{
+    margin-top: 10px;
+    min-height: 145px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.User, .add{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+.users{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+.collab-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logo{
+    display: flex;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: green;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.icons{
+    color: #3c4043;
+    cursor: pointer;
+}
+
+.icon{
+    width: 42px;
+    height: 42px;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    opacity: .5;
+}
+.search-box{
+    border: 1px solid #e0e0e0;
+    margin-left: 50px;
+    width: max-content;
+}
+
+.searchDisplay{
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    padding: 0.4em;
+    border-top: 1px solid rgba(0,0,0,.15);
+    font-size: 13px;
+    width: 321px;
+}
+.searchDisplay:hover{
+    background-color: rgba(95,99,104,0.161);
+}
+
+.input-div{
+    margin-top: 7px;
+    width: 80%;
+    height: 100%;
+}
+input{
+    width:92%;
+    color: #3c4043;
+    font-size: 14px;
+    font-family: "Roboto",arial,sans-serif;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.btns{ 
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1000px){
+    .Card{
+        min-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .Card{
+        min-width: 350px;
+    }
+}

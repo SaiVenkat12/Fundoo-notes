@@ -43,7 +43,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import {  OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
-import { CollabratorComponent } from './collabrator/collabrator.component';
+import { CollabratorComponent } from './components/collabrator/collabrator.component';
+import { SearchFilterPipePipe } from './Pipes/search-filter-pipe.pipe';
+
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import { CollabratorComponent } from './collabrator/collabrator.component';
     SearchnotePipe,
     EditLabelComponent,
     CollabratorComponent,
+    SearchFilterPipePipe
+
   ],
   imports: [
     BrowserModule,

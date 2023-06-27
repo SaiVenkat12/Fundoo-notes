@@ -221,6 +221,17 @@ addCollabrator(reqdata: any,id:any) {
   return this.httpService.postService('notes/'+id+'/AddcollaboratorsNotes', reqdata, true, httpHeadersOption)
 }
 
+removeCollabrator(notesId:any,collabId:any){
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+}
+return this.httpService.deleteService('notes/'+notesId+'/removeCollaboratorsNotes/'+collabId, true, httpHeadersOption)
+}
+
 }
 
 
