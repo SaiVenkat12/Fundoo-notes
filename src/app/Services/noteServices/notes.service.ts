@@ -232,6 +232,17 @@ removeCollabrator(notesId:any,collabId:any){
 return this.httpService.deleteService('notes/'+notesId+'/removeCollaboratorsNotes/'+collabId, true, httpHeadersOption)
 }
 
+getNotesListbyLabel(labelName:any){
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+  }
+  return this.httpService.postService('notes/getNotesListByLabel/'+labelName+'?access_token='+this.token, '', true, httpHeadersOption)
+}
+
 }
 
 

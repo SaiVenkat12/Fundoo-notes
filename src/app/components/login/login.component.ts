@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId',result.userId)
         console.log("id=",result.id);
         this.route.navigateByUrl('/home');
-        this.dataService.userId(result.userId);
+        
       })
     }
     else {

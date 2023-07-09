@@ -8,9 +8,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GetallnotesComponent } from './components/getallnotes/getallnotes.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DisplayLablesComponent } from './components/display-lables/display-lables.component';
 
 
 const routes: Routes = [
+
   {
     path: '', pathMatch: 'full', redirectTo: 'login'
   },
@@ -28,12 +31,17 @@ const routes: Routes = [
   },
   {
     path: 'home', component: DashboardComponent,
-    children: [{ path: 'notes', component: GetallnotesComponent },
+    children: [
+    { path: 'notes', component: GetallnotesComponent },
     { path: '', pathMatch: 'full', redirectTo: 'notes' },
     {path:'trash', component:TrashComponent},
     {path:'archive', component:ArchiveComponent},
+    {path:'Label', component:DisplayLablesComponent},
+    {path:'Label/:labelName', component:DisplayLablesComponent}
   ]
-  }
+  },
+ { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({

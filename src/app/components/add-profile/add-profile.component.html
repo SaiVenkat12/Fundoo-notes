@@ -1,0 +1,45 @@
+
+<mat-card class="card">
+<div class="card-content">
+    <div class="header">
+        <mat-icon>close</mat-icon>
+        <div class="title">
+            <span class="logo-title">
+                <span class="title1">G</span>
+                <span class="title2">o</span>
+                <span class="title3">o</span>
+                <span class="title1">g</span>
+                <span class="title4">l</span>
+                <span class="title2">e</span>
+            </span>
+            <span class="logo-title2">Account</span>
+        </div>
+        
+    </div>
+    <div class="content-div">
+        <div class="pic-div">
+            <div class="logo-title3">Profile picture</div>
+            <mat-card-subtitle>
+                A picture helps people recognize you and lets you know when you’re signed in to your account
+            </mat-card-subtitle>
+            <div class="img-div">
+                <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image" />
+            </div>
+        </div>
+        <mat-card-actions class="btn" >
+            <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+            <button class="btn" mat-stroked-button color="primary" (click)="uploadFile()" *ngIf="!selectedFile">
+                <mat-icon>add_a_photo</mat-icon>
+                <span>Add profile picture</span>
+            </button>
+
+            <div *ngIf="selectedFile">
+                Selected File: {{ selectedFile.name }}
+                <br>
+                File Type: {{ selectedFile.type }}
+              </div>
+        </mat-card-actions>
+    </div>
+</div>
+
+</mat-card>

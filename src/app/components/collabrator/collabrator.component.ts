@@ -1,9 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { UserService } from 'src/app/Services/UserService/user.service';
-UserService
+import { MatMenuTrigger } from '@angular/material/menu';
+import { ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-collabrator',
@@ -11,6 +13,8 @@ UserService
   styleUrls: ['./collabrator.component.scss']
 })
 export class CollabratorComponent implements OnInit {
+
+  @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger | any;
 
   noteData: any = []
   collabData: any = []
@@ -21,6 +25,7 @@ export class CollabratorComponent implements OnInit {
   show: boolean = true;
   showSearch: boolean = false;
   collabUser: any
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditLabelComponent>,
     private noteService: NotesService, private userService: UserService) {
@@ -37,20 +42,22 @@ ngOnInit(): void {
     this.collabUser = data
     this.save(email)
   }
+  
 
   done(event: any) {
-
+    
     console.log(event.target.value);
     this.searchWord = event.target.value;
     if (this.searchWord != "") {
       console.log("search");
-      
+      this.menuTrigger.openMenu();
       this.show = false;
       this.showSearch=true;
       this.save(this.searchWord)
     } else {
       this.show = true;
       this.showSearch=false;
+      this.menuTrigger.closeMenu();
     }
 
 
@@ -70,7 +77,7 @@ ngOnInit(): void {
     this.noteService.addCollabrator(reqData, this.noteData.id).subscribe((res: any) => {
       console.log(res);
       this.collabData.push(reqData);
-      this.searchWord=''
+      this.searchWord=""
       this.showSearch=false;
     })
 
@@ -93,6 +100,7 @@ ngOnInit(): void {
   submit() {
     this.dialogRef.close();
   }
+
   save(word: any) {
     let reqData = {
       searchWord: word
@@ -102,9 +110,6 @@ ngOnInit(): void {
       console.log(res);
       this.userData = res.data.details;
       console.log(this.userData);
-
-
-
     })
     //this.dialogRef.close();
   }

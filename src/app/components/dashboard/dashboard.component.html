@@ -24,12 +24,12 @@
 
             <div class="toolbar-right">
                 <div class="right1">
-                    <button mat-icon-button matTooltip="refresh" class="top-icons"
+                    <button mat-icon-button matTooltip="refresh" class="top-icons" (click)="refreshView()"
                         routerLink="/home"><mat-icon>refresh</mat-icon>
                     </button>
 
-                    <button mat-icon-button matTooltip="list view" id="viewbutton"
-                        class="top-icons"><mat-icon>view_agenda</mat-icon>
+                    <button mat-icon-button matTooltip="list view" id="viewbutton" (click)="changeView()"
+                        class="top-icons"><mat-icon>{{listView?'grid_view':'view_agenda'}}</mat-icon>
                     </button>
 
                     <button mat-icon-button matTooltip="settings" class="top-icons"><mat-icon>settings</mat-icon>
@@ -40,9 +40,40 @@
                     <button mat-icon-button matTooltip="apps" class="top-icons"><mat-icon>apps</mat-icon>
                     </button>
 
-                    <button mat-icon-button matTooltip="account" class="top-icons"><mat-icon>account_circle</mat-icon>
+                    <button mat-icon-button matTooltip="account" class="top-icons" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"><mat-icon>account_circle</mat-icon>
                     </button>
                 </div>
+                <mat-menu class="a-menu" #menu="matMenu" xPosition="before">
+                    <div class="menu-content">
+                        <mat-card class="menu-card">
+                            <div class="U-info">
+                                <div class="User">
+                                    <div class="logo" (click)="openProfileDialog()">S</div>
+                                    <div class="info">
+                                        <span>Sai Venkat</span>
+                                        <mat-card-subtitle>gsaiv1001@gmail.com</mat-card-subtitle>
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </mat-card>
+                        <mat-card class="menu-card1">
+                            <button mat-button class="add">
+                                <mat-icon>person_add_alt_1</mat-icon>
+                                <span>add another account</span>
+                            </button>
+                        </mat-card>
+                        <button mat-button class="out" (click)="logout()" routerLink="/">
+                            <mat-icon>logout</mat-icon>
+                            <span>Sign out</span>
+                        </button>
+                        <mat-divider></mat-divider>
+                        <ul>
+                            <span>Privacy Policy</span>
+                            <li>Terms and Conditions</li>
+                        </ul>
+                    </div>
+                </mat-menu>
             </div>
         </mat-toolbar>
     </div>
@@ -74,14 +105,16 @@
                         </div>
                     </button>
 
-                    <button mat-flat-button class="side-title" *ngFor="let label of labels">
-                        <div class="side-button">
-                            <span>
-                                <img class="side-icons" src="../../../assets/icons/label_FILL0_wght400_GRAD0_opsz48.svg">
-                            </span>
-                            <h3 mat-list-item>{{label.label}}</h3>
-                        </div>
-                    </button>
+                    <div *ngFor="let label of labels" (click)="redirectToLabel(label.label)">
+                        <button mat-flat-button class="side-title">
+                            <div class="side-button" >
+                                <span>
+                                    <img class="side-icons" src="../../../assets/icons/label_FILL0_wght400_GRAD0_opsz48.svg">
+                                </span>
+                                <h3 mat-list-item>{{label.label}}</h3>
+                            </div>
+                        </button>
+                    </div>
 
                     <button mat-flat-button class="side-title" (click)="openDialog()">
                         <div class="side-button">
@@ -136,7 +169,7 @@
                     </button>
 
                     <button class="side-title2" *ngFor="let label of labels">
-                        <div class="side-button">
+                        <div class="side-button" (click)="redirectToLabel(label.label)">
                             <span>
                                 <img class="side-icons" src="../../../assets/icons/label_FILL0_wght400_GRAD0_opsz48.svg">
                             </span>
@@ -169,7 +202,7 @@
                 </mat-nav-list>
 
             </div>
-            <div>
+            <div class="child-route">
                 <router-outlet></router-outlet>
             </div>
 

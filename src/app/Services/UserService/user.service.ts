@@ -82,4 +82,27 @@ export class UserService {
     return this.httpService.postService('user/searchUserList', reqdata, true, httpHeadersOption)
   }
 
+  signout(){
+    this.token=localStorage.getItem('token')
+    let httpHeadersOption = {
+      headers : new HttpHeaders({ 
+        contentType : 'application/json',
+        authorization : this.token
+      })
+    }
+    return this.httpService.postService('user/logout?access_token='+this.token, '', true, httpHeadersOption)
+  }
+
+  uploadProfilePic(reqdata:any){
+
+    this.token=localStorage.getItem('token')
+    let httpHeadersOption = {
+      headers : new HttpHeaders({ 
+        contentType : 'multipart/form-data',
+        authorization : this.token
+      })
+    }
+    return this.httpService.postService('user/uploadProfileImage?access_token='+this.token, reqdata, true, httpHeadersOption)
+  }
+
 }

@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/Services/DataServices/data.service';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/UserService/user.service';
+import { AddProfileComponent } from 'src/app/components/add-profile/add-profile.component';
 
 
 @Component({
@@ -17,13 +20,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   isSelected =false;
   show: boolean = true;
-  
-
+  listView:boolean=false;
+user:any=[]
   labels:any;
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService: DataService,
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService: DataService, private userService:UserService,
+    private route: Router,
     public dialog: MatDialog,private noteService:NotesService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -32,15 +36,42 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllLabels()
+    //this.getUserData()
   }
+
   searchbg(){
     this.isSelected=true; 
+  }
+
+  refreshView(){
+    this.listView=false;
+    this.dataService.ChangeView(this.listView);
+  }
+
+  changeView(){
+    this.listView=!this.listView;
+    console.log(this.listView);
+    this.dataService.ChangeView(this.listView);
+  }
+
+  logout(){
+    this.userService.signout().subscribe((res:any)=>{
+    })
   }
 
   showside(e: any) {
     //this.show = e.target.Changed;
     this.show = !this.show;
   }
+  // getUserData(){
+  //   this.dataService.currentUser.subscribe((res:any)=>{
+  //    console.log(res.data.data,"ddd");
+     
+  //     this.user=res.data[0].user;
+  //     console.log(this.user);
+      
+  //   })
+  // }
 
   searchNote(event: any) {
     console.log(event.target.value);
@@ -55,6 +86,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.dataService.sendLabelsData(this.labels)
       
     })
+  }
+  redirectToLabel(label:any){
+    console.log(label);
+    this.noteService.getNotesListbyLabel(label).subscribe((res:any)=>{
+      console.log(res);
+      console.log(res.data.data);
+      this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.route.navigate(['home/Label/'+label]);
+      });
+      
+      console.log("refresh");
+      
+    })
+    
   }
 
   openDialog(){
@@ -74,6 +119,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.getAllLabels()
       
     });
+  }
+  openProfileDialog(){
+    const dialogRef = this.dialog.open(AddProfileComponent, {data:''});
+
   }
 
   ngOnDestroy(): void {

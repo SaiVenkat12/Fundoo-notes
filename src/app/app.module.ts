@@ -45,6 +45,9 @@ import {  OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { CollabratorComponent } from './components/collabrator/collabrator.component';
 import { SearchFilterPipePipe } from './Pipes/search-filter-pipe.pipe';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DisplayLablesComponent } from './components/display-lables/display-lables.component';
+import { AddProfileComponent } from './components/add-profile/add-profile.component';
 
 
 
@@ -66,7 +69,10 @@ import { SearchFilterPipePipe } from './Pipes/search-filter-pipe.pipe';
     SearchnotePipe,
     EditLabelComponent,
     CollabratorComponent,
-    SearchFilterPipePipe
+    SearchFilterPipePipe,
+    PageNotFoundComponent,
+    DisplayLablesComponent,
+    AddProfileComponent
 
   ],
   imports: [

@@ -19,11 +19,13 @@ export class DisplayComponent implements OnInit {
   description: any
   searchText:any
   excludedData = 'GMT+0000 (UTC)';
+  view:boolean=true;
     
     constructor(public dialog: MatDialog, private dataService:DataService,private noteservice: NotesService) { }
 
   ngOnInit(): void {
         this.displaySearchresults()
+        this.changeDisplayView()
         var gmtTimes = ["2023-06-19T10:00:00Z", "2023-06-19T15:30:00Z", "2023-06-19T18:45:00Z"];
 
 // Function to convert GMT time to IST
@@ -60,6 +62,14 @@ console.log("IST times:", istTimes);
       if(result!=='default message'){
         this.searchText=result;
       }
+    })
+  }
+
+  changeDisplayView(){
+    this.dataService.currentView.subscribe((res:any)=>{
+      console.log(res);
+      this.view=res;
+      
     })
   }
 

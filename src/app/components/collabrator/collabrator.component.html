@@ -5,15 +5,16 @@
     <mat-card-content class="Content">
         <div class="collab-info">
             <div class="User">
-                <div class="logo">{{(noteData.user.firstName).charAt(0)}}</div>
+                <div class="logo">{{(noteData.user.firstName).charAt(0)}} {{(noteData.user.lastName).charAt(0)}}</div>
                 <div class="info">
                     <span>{{noteData.user.firstName}} {{noteData.user.lastName}} (owner)</span>
                     <mat-card-subtitle>{{noteData.user.email}}</mat-card-subtitle>
                 </div>
             </div>
-            <div class="users" *ngFor="let user of collabData">
+            <div class="users" *ngFor="let user of collabData; let i = index">
                 <div class="User" (mouseenter)="user.showClose = false" (mouseleave)="user.showClose = true">
-                    <div class="logo">{{(user.firstName).charAt(0)}}</div>
+                    <div class="logo" [ngClass]="'element-bg-' + (i % 10 + 1)">{{(user.firstName).charAt(0)}}
+                        {{(user.lastName).charAt(0)}}</div>
                     <div class="info">
                         <span>{{user.firstName}} {{user.lastName}}</span>
                         <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
@@ -25,22 +26,25 @@
                 <div class="add">
                     <mat-icon class="icon">person_add</mat-icon>
                     <div class="input-div">
-                        <input placeholder="person or email to share with" (keyup)="done($event)"
-                            [(ngModel)]="searchWord">
+                        <input #inputField placeholder="person or email to share with" (keyup)="done($event)" 
+                            [(ngModel)]="searchWord" [matMenuTriggerFor]="menu">
                     </div>
                 </div>
                 <mat-icon class="icons" *ngIf="!show" (click)="addUser()">done</mat-icon>
             </div>
         </div>
 
-        <div class="search-box" *ngIf="showSearch">
-            <div class="searchDisplay" *ngFor="let data of userData" (click)="selectEmail(data.email,data)">
-                <span>{{data.firstName}} {{data.lastName}}</span>
-                <span>
-                    <{{data.email}}>
-                </span>
-            </div>
-        </div>
+            <mat-menu #menu="matMenu" xPosition="after" yPosition="below" >
+                <div class="search-box">
+                    <div class="searchDisplay" *ngFor="let data of userData" (click)="selectEmail(data.email,data)" >
+                        <span>{{data.firstName}} {{data.lastName}}</span>
+                        <span>
+                            <{{data.email}}>
+                        </span>
+                    </div>
+                </div>
+            </mat-menu>
+
     </mat-card-content>
     <mat-card-actions class="btns">
         <div>

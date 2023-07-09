@@ -1,5 +1,6 @@
 .display{
     margin: 3%;
+    width: 100%;
 }
 .displaynote{
     padding-left: 2%;
@@ -9,6 +10,35 @@
     flex-wrap: wrap;
     align-items: flex-start;
     color: #5f6368;
+}
+.viewDisplay{
+    padding-left: 0%;
+    flex-direction:column;
+    align-items: center;
+}
+
+.viewCard{
+    min-width: 55%;
+}
+
+.collab-div{
+    display: flex;
+    margin: 4px;
+    margin-top: 8px;
+    margin-left: 10px;
+    gap: 4px;
+}
+
+.logo{
+    display: flex;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background: green;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
 }
 
 .note-title{
@@ -41,7 +71,7 @@ img{
 }
 
 .card{
-    max-width: 240px;
+    //max-width: 240px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -64,13 +94,29 @@ img{
     
 }
 
+.element-bg-1 {
+    background-color: rgb(187, 69, 69);
+}
+
+.element-bg-2 {
+    background-color: rgb(139, 169, 47);
+}
+
+.element-bg-3 {
+    background-color: #3d3db4;
+}
+
+.element-bg-4 {
+    background-color: #79316d;
+}
+
+
 
 
 @media only screen and (max-width: 950px) {
 
     .displaynote{
         margin-left: 5%;
-        justify-content: center;
     }
 
     .note-title{

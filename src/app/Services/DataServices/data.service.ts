@@ -12,6 +12,12 @@ export class DataService {
   private messageId = new BehaviorSubject("");
   currentIdMessage = this.messageId.asObservable();
 
+  private userInfo = new BehaviorSubject("");
+  currentUser = this.userInfo.asObservable();
+
+  private viewOption = new BehaviorSubject("");
+  currentView = this.viewOption.asObservable();
+
   private labelData = new BehaviorSubject("");
   currentLabelMessage = this.labelData.asObservable();
 
@@ -21,8 +27,12 @@ export class DataService {
     this.messageSource.next(message);
   }
 
+  ChangeView(message: any){
+    this.viewOption.next(message);
+  }
+
   userId(message: any){
-    this.messageId.next(message);
+    this.userInfo.next(message);
   }
 
   sendLabelsData(message: any){

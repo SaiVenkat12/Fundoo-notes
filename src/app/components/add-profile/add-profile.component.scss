@@ -1,0 +1,67 @@
+.card{
+    max-width: 400px;
+    width: 400px;
+    min-height: 450px;
+}
+.card-content{
+    margin: 20px;
+}
+
+.header{
+    display: flex;
+    gap: 28%;
+    margin-bottom: 23px;
+}
+
+.content-div{
+    display: flex;
+    height: 380px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pic-div{
+    margin: 4px;
+}
+
+.img-div{
+    height: 100%;
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+}
+
+.title{
+    display: flex;
+    font-size: x-large;
+    gap: 8px
+}
+
+.logo-title2 {
+    color: #3c4043;
+    font-size: x-large;
+}
+
+.logo-title3 {
+    color: #3c4043;
+}
+
+.title1{
+    color: blue;
+}
+
+.title2{
+    color:red ;
+}
+
+.title3{
+    color:yellow ;
+}
+
+.title4{
+    color: green;
+}
+
+.btn{
+    width: 100%;
+}
