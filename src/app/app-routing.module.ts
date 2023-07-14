@@ -10,6 +10,7 @@ import { TrashComponent } from './components/trash/trash.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DisplayLablesComponent } from './components/display-lables/display-lables.component';
+import { AuthenticationGuard } from './auth/authentication.guard';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
     path: 'reset-password', component: ResetPasswordComponent
   },
   {
-    path: 'home', component: DashboardComponent,
+    path: 'home', component: DashboardComponent, canActivate:[AuthenticationGuard],
     children: [
     { path: 'notes', component: GetallnotesComponent },
     { path: '', pathMatch: 'full', redirectTo: 'notes' },

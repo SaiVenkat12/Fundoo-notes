@@ -10,6 +10,7 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 export class GetallnotesComponent implements OnInit {
 
   allnotes:any
+  pinedNotes:any
   constructor(private noteservice: NotesService,private dataService:DataService) { }
   ngOnInit(){
     this.getall()
@@ -27,8 +28,11 @@ export class GetallnotesComponent implements OnInit {
       console.log(result);
       this.dataService.userId(result);
       this.allnotes=result.data.data.reverse();
-      this.allnotes=this.allnotes.filter((notes:any)=>notes.isDeleted===false && notes.isArchived===false)
+      this.allnotes=this.allnotes.filter((notes:any)=>notes.isDeleted===false && notes.isArchived===false )
+      this.pinedNotes=(result.data.data).filter((notes:any)=>notes.isPined===true);
       console.log(this.allnotes);
+      console.log("pinned notes",this.pinedNotes);
+      
     })
   }
   

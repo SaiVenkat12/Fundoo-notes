@@ -14,7 +14,8 @@ import { MatDialog,MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 })
 export class IconsComponent implements OnInit {
   @Input() noteinfo: any
-  @Input() colorchange: string = ''
+  @Input() colorchange: string = '';
+  @Input() newNote:boolean = false;
   @Output() refreshpageEvent = new EventEmitter<any>();
   @Output() backgroundColorChanged = new EventEmitter<string>();
 

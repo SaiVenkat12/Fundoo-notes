@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DataService } from 'src/app/Services/DataServices/data.service';
-import { UserService } from 'src/app/Services/UserService/user.service';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
 
 @Component({
@@ -23,7 +21,7 @@ export class EditLabelComponent implements OnInit {
   @Output() onCreate = new EventEmitter<any>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditLabelComponent>,
-    private noteService: NotesService, private userService: UserService, private dataService: DataService) {
+    private noteService: NotesService) {
     this.labelArray = data;
 
   }

@@ -12,8 +12,9 @@ export class CreatenotesComponent implements OnInit {
   Title = '';
   description = '';
   backgroundColor='';
-
+  createNote: boolean = true;
   show: boolean = true;
+  pined: boolean = false;
   constructor(private noteservice: NotesService) { }
   ngOnInit(): void {
     
@@ -30,6 +31,10 @@ export class CreatenotesComponent implements OnInit {
     this.show = false
   }
 
+  pinNote(){
+    this.pined=!this.pined;
+  }
+
   closenote() {
     if(this.Title || this.description !== '')
     {
@@ -37,7 +42,8 @@ export class CreatenotesComponent implements OnInit {
       let reqdata = {
       title: this.Title,
       description: this.description,
-      color:this.backgroundColor
+      color:this.backgroundColor,
+      isPined:this.pined
     }
     console.log(reqdata);
     

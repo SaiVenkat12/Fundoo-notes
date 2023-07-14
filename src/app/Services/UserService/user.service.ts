@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../HttpService/http.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-
+import { DataService } from '../DataServices/data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 export class UserService {
   token:any
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private dataService:DataService) { }
 
   signupService(reqSignup: any) {
 
@@ -91,6 +91,11 @@ export class UserService {
       })
     }
     return this.httpService.postService('user/logout?access_token='+this.token, '', true, httpHeadersOption)
+  }
+
+  setToken(){
+    this.token=localStorage.setItem('token',"")
+    console.log(this.token);
   }
 
   uploadProfilePic(reqdata:any){

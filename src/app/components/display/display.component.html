@@ -2,13 +2,15 @@
     <div class="displaynote" [ngClass]="{'viewDisplay':view}">
 
         <mat-card class="note-title" [ngClass]="{'viewCard':view}" *ngFor="let note of displayallnotes | searchnote:searchText" [style.background-color]="note.color">
-            <div class="card" >
-                <div (click)="openDialog(note)">
+            <div class="card"  >
+                <div >
                     <mat-card-content class="title-content">
-                        {{note.title}}
+                        <span (click)="openDialog(note)">{{note.title}}</span>
+                        <img class="note-icons" src="../../../assets/icons/push_pin_FILL0_wght0_GRAD0_opszNaN.svg" alt="unpinned" (click)="pinNote(note.id)" *ngIf="!note.isPined">
+                        <img class="note-icon" src="../../../assets/icons/push_pin_FILL1_wght400_GRAD0_opsz40.svg" alt="pinned" *ngIf="note.isPined" (click)="pinNote(note.id)">
                     </mat-card-content>
 
-                    <mat-card-content class="content">
+                    <mat-card-content class="content" (click)="openDialog(note)">
                         {{note.description}}
                     </mat-card-content>
                     <mat-chip-option class="chips" *ngFor="let remind of note.reminder"

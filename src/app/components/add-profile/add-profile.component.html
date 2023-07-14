@@ -2,7 +2,7 @@
 <mat-card class="card">
 <div class="card-content">
     <div class="header">
-        <mat-icon>close</mat-icon>
+        <mat-icon (click)="close()">close</mat-icon>
         <div class="title">
             <span class="logo-title">
                 <span class="title1">G</span>
@@ -23,23 +23,46 @@
                 A picture helps people recognize you and lets you know when you’re signed in to your account
             </mat-card-subtitle>
             <div class="img-div">
-                <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image" />
+                 <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
+                 <img *ngIf="!imageUrl" [src]="getImgUrl" alt="Selected Image">
             </div>
         </div>
         <mat-card-actions class="btn" >
-            <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
-            <button class="btn" mat-stroked-button color="primary" (click)="uploadFile()" *ngIf="!selectedFile">
+            <input type="file" #fileInput style="display: none"  (change)="onFileSelected($event)">
+            <button class="btn" mat-stroked-button color="primary" (click)="uploadFile()"  *ngIf="!show">
                 <mat-icon>add_a_photo</mat-icon>
                 <span>Add profile picture</span>
             </button>
 
-            <div *ngIf="selectedFile">
-                Selected File: {{ selectedFile.name }}
-                <br>
-                File Type: {{ selectedFile.type }}
-              </div>
+            <div *ngIf="selectedFile"> 
+                <div >
+                    Selected File: {{ selectedFile.name }}
+                    <br>
+                    File Type: {{ selectedFile.type }}
+                  </div>
+                  <div class="saveBtn">
+                    <button  mat-raised-button color="primary" (click)="save()">Save</button>
+                  </div>
+            </div>
+            
         </mat-card-actions>
     </div>
 </div>
 
-</mat-card>
+</mat-card> 
+
+<!-- <h1>Image Cropper</h1>
+<image-cropper
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="4 / 3"
+  format="png"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+<form #myForm="ngForm" (ngSubmit)="saveCroppedImage(myForm)">
+  <input type="file" accept="image/*" (change)="selectImage($event)" required>
+  <button type="submit">Save Cropped Image</button>
+</form> -->

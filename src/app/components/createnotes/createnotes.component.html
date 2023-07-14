@@ -4,8 +4,12 @@
             <mat-card-content class="title-content" *ngIf="!show">
                 <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title" [style.background-color]="backgroundColor">
                 <div class="title-icons" *ngIf="!show">
-                    <button mat-icon-button matTooltip="pin note"
-                        class="top-icons"><mat-icon>push_pin</mat-icon></button>
+                    <button mat-icon-button matTooltip="pin note" (click)="pinNote()"
+                        class="top-icons">
+                        <span>
+                            <img class="note-icons" src="../../../assets/icons/push_pin_FILL0_wght0_GRAD0_opszNaN.svg" alt="unpinned" *ngIf="!pined">
+                        <img class="note-icons" src="../../../assets/icons/push_pin_FILL1_wght400_GRAD0_opsz40.svg" alt="pinned" *ngIf="pined" >
+                        </span></button>
                 </div>
             </mat-card-content>
             <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()" >
@@ -30,7 +34,7 @@
             </mat-card-content>
             <mat-card-actions *ngIf="!show">
                 <div class="icons">
-                    <app-icons (backgroundColorChanged)="onBackgroundColorChanged($event)"></app-icons>
+                    <app-icons (backgroundColorChanged)="onBackgroundColorChanged($event)" [newNote]="createNote"></app-icons>
                 </div>
                 <button class="closeButton" mat-button matTooltip="Close and Save" (click)="closenote()">Close</button>
             </mat-card-actions>

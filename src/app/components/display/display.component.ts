@@ -12,7 +12,8 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 export class DisplayComponent implements OnInit {
 
   @Output() updatenoteEvent = new EventEmitter<Object>();
-  @Input() displayallnotes: any
+  @Input() displayallnotes: any;
+  @Input() pinnedNotesData:any;
 
 
   title: any
@@ -20,6 +21,7 @@ export class DisplayComponent implements OnInit {
   searchText:any
   excludedData = 'GMT+0000 (UTC)';
   view:boolean=true;
+  pinned:boolean=false;
     
     constructor(public dialog: MatDialog, private dataService:DataService,private noteservice: NotesService) { }
 
@@ -93,6 +95,20 @@ console.log("IST times:", istTimes);
 
   refreshDisplaydata(){
     this.updatenoteEvent.emit();
+  }
+
+  pinNote(Id:any){
+    this.pinned=!this.pinned;
+    console.log(this.pinned);
+    let reqData={
+      noteIdList: [Id],
+      isPined:this.pinned
+    }
+
+    this.noteservice.pinAndUnpinNotes(reqData).subscribe((res:any) => {
+      this.refreshDisplaydata()
+    })
+    
   }
 
 }

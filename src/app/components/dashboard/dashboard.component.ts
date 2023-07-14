@@ -8,6 +8,7 @@ import { NotesService } from 'src/app/Services/noteServices/notes.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/UserService/user.service';
 import { AddProfileComponent } from 'src/app/components/add-profile/add-profile.component';
+import { Token } from '@angular/compiler';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   listView:boolean=false;
 user:any=[]
   labels:any;
-
+  imageUrl:any;
+  baseImageUrl="http://fundoonotes.incubation.bridgelabz.com/";
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService: DataService, private userService:UserService,
@@ -37,10 +39,17 @@ user:any=[]
   ngOnInit(): void {
     this.getAllLabels()
     //this.getUserData()
+    this.getImage()
   }
 
   searchbg(){
     this.isSelected=true; 
+  }
+
+  getImage(){
+this.imageUrl=this.baseImageUrl+localStorage.getItem('imageUrl')
+console.log("image",this.imageUrl);
+
   }
 
   refreshView(){
@@ -56,6 +65,8 @@ user:any=[]
 
   logout(){
     this.userService.signout().subscribe((res:any)=>{
+      this.dataService.setTokenData("");
+      this.userService.setToken()
     })
   }
 
@@ -63,21 +74,12 @@ user:any=[]
     //this.show = e.target.Changed;
     this.show = !this.show;
   }
-  // getUserData(){
-  //   this.dataService.currentUser.subscribe((res:any)=>{
-  //    console.log(res.data.data,"ddd");
-     
-  //     this.user=res.data[0].user;
-  //     console.log(this.user);
-      
-  //   })
-  // }
 
   searchNote(event: any) {
     console.log(event.target.value);
     this.dataService.changeMessage(event.target.value);
-
   }
+
   getAllLabels(){
     this.noteService.getNoteLabels().subscribe((res:any)=>{
       this.labels=res.data.details;
@@ -121,7 +123,7 @@ user:any=[]
     });
   }
   openProfileDialog(){
-    const dialogRef = this.dialog.open(AddProfileComponent, {data:''});
+    const dialogRef = this.dialog.open(AddProfileComponent, {data:this.baseImageUrl});
 
   }
 

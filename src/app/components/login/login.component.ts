@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         });
         localStorage.setItem('token', result.id);
         localStorage.setItem('userId',result.userId)
+        localStorage.setItem('imageUrl',result.imageUrl)
         console.log("id=",result.id);
         this.route.navigateByUrl('/home');
         

@@ -48,6 +48,8 @@ import { SearchFilterPipePipe } from './Pipes/search-filter-pipe.pipe';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DisplayLablesComponent } from './components/display-lables/display-lables.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
+import { AuthGuardServiceService } from './Services/auth-guard-service.service';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -81,6 +83,7 @@ import { AddProfileComponent } from './components/add-profile/add-profile.compon
     BrowserAnimationsModule,
 
     HttpClientModule,
+
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -101,11 +104,15 @@ import { AddProfileComponent } from './components/add-profile/add-profile.compon
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+
+    ImageCropperModule,
     
 
 
   ],
-  providers: [],
+  providers: [
+    AuthGuardServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

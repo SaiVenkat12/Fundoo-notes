@@ -21,6 +21,9 @@ export class DataService {
   private labelData = new BehaviorSubject("");
   currentLabelMessage = this.labelData.asObservable();
 
+  private tokenData = new BehaviorSubject("");
+  currentToken = this.tokenData.asObservable();
+
   constructor() { }
 
   changeMessage(message: any) {
@@ -37,6 +40,10 @@ export class DataService {
 
   sendLabelsData(message: any){
     this.labelData.next(message);
+  }
+
+  setTokenData(message: any){
+    this.tokenData.next(message);
   }
 
 }

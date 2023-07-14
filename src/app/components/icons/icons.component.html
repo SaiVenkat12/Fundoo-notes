@@ -160,14 +160,15 @@
     </button>
 
     <mat-menu class="more-menu" #menu="matMenu" (click)="$event.stopPropagation()">
-        <button mat-menu-item (click)="Delete()">Delete note</button>
+        <button mat-menu-item (click)="Delete()" *ngIf="!newNote">Delete note</button>
+
         <button mat-menu-item [matMenuTriggerFor]="label" #menuTrigger="matMenuTrigger" (menuClosed)="onMenuClosed()"
-            (click)="$event.stopPropagation()" > {{labelTitle?'Add label':'change label'}}</button>
+            (click)="$event.stopPropagation()" *ngIf="!newNote"> {{labelTitle?'Add label':'change label'}}</button>
 
         <button mat-menu-item>Add drwaing</button>
-        <button mat-menu-item>Make a copy</button>
+        <button mat-menu-item *ngIf="!newNote">Make a copy</button>
         <button mat-menu-item>show checkboxs</button>
-        <button mat-menu-item>copy to google docs</button>
+        <button mat-menu-item *ngIf="!newNote">copy to google docs</button>
     </mat-menu>
 
     <mat-menu class="label-menu" #label="matMenu" (click)="$event.stopPropagation()" >

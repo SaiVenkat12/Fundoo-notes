@@ -243,6 +243,17 @@ getNotesListbyLabel(labelName:any){
   return this.httpService.postService('notes/getNotesListByLabel/'+labelName+'?access_token='+this.token, '', true, httpHeadersOption)
 }
 
+pinAndUnpinNotes(reqdata: any) {
+  this.token = localStorage.getItem('token');
+  let httpHeadersOption = {
+    headers: new HttpHeaders({
+      contentType: 'application/json',
+      authorization: this.token,
+    })
+  }
+  return this.httpService.postService('notes/pinUnpinNotes?access_token='+this.token, reqdata, true, httpHeadersOption)
+}
+
 }
 
 

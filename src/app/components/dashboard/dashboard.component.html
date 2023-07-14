@@ -6,7 +6,7 @@
                     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
                 </div>
                 <div class="app-Logo" routerLink="/home">
-                    <img class="logo-img" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
+                    <img class="logo-img" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" 
                         alt="logo">
                     <h1 class="app-name">Fundoo</h1>
                 </div>
@@ -40,7 +40,9 @@
                     <button mat-icon-button matTooltip="apps" class="top-icons"><mat-icon>apps</mat-icon>
                     </button>
 
-                    <button mat-icon-button matTooltip="account" class="top-icons" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"><mat-icon>account_circle</mat-icon>
+                    <button mat-icon-button matTooltip="account" class="top-icons" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                         <img src={{imageUrl}} style="border-radius: 50%; width: 24px; height: 24px;" > 
+                        
                     </button>
                 </div>
                 <mat-menu class="a-menu" #menu="matMenu" xPosition="before">
@@ -48,7 +50,9 @@
                         <mat-card class="menu-card">
                             <div class="U-info">
                                 <div class="User">
-                                    <div class="logo" (click)="openProfileDialog()">S</div>
+                                    
+                                        <img src={{imageUrl}} style="border-radius: 50%; width: 32px; height: 32px;"  (click)="openProfileDialog()">
+                                    
                                     <div class="info">
                                         <span>Sai Venkat</span>
                                         <mat-card-subtitle>gsaiv1001@gmail.com</mat-card-subtitle>
