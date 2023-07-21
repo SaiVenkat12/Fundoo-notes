@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/Services/DataServices/data.service';
 import { NotesService } from 'src/app/Services/noteServices/notes.service';
 import { CollabratorComponent } from '../collabrator/collabrator.component';
-import { MatDialog,MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { UpdatenotesComponent } from '../updatenotes/updatenotes.component';
 
 
 @Component({
@@ -15,16 +16,16 @@ import { MatDialog,MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 export class IconsComponent implements OnInit {
   @Input() noteinfo: any
   @Input() colorchange: string = '';
-  @Input() newNote:boolean = false;
+  @Input() newNote: boolean = false;
   @Output() refreshpageEvent = new EventEmitter<any>();
   @Output() backgroundColorChanged = new EventEmitter<string>();
 
   //date = new FormControl(new Date());
   date = new Date();
-  selectDate=new Date();
-  remindDate=new Date();
-  remindTime:any
-  remindTime2:number=8
+  selectDate = new Date();
+  remindDate = new Date();
+  remindTime: any
+  remindTime2: number = 8
 
   show: boolean = true;
   labelArray: any = []
@@ -34,12 +35,13 @@ export class IconsComponent implements OnInit {
   labelTitle: boolean = true;
   daysUntilNextMonday: any
   isRemind: boolean = true;
+  showcheckbox: boolean = false;
 
- 
+
   showOptions: boolean = false;
 
-  
-  constructor(private noteservice: NotesService, private dataService: DataService, private snackBar: MatSnackBar,public dialog: MatDialog) { }
+
+  constructor(private noteservice: NotesService, private dataService: DataService, private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getLabelData()
@@ -51,24 +53,44 @@ export class IconsComponent implements OnInit {
       this.daysUntilNextMonday = 7;
     }
     this.remindDate.setHours(20, 0, 0, 0)
-    if(this.date>= this.remindDate){
-      this.isRemind=false;
+    if (this.date >= this.remindDate) {
+      this.isRemind = false;
     }
 
   }
   toggleOptions() {
     this.showOptions = !this.showOptions;
   }
-  open(){
+  open() {
     console.log(this.noteinfo);
   }
 
-  openDialog(){
-    const dialogRef = this.dialog.open(CollabratorComponent, {data:this.noteinfo});
+  openDialog() {
+    const dialogRef = this.dialog.open(CollabratorComponent, { data: this.noteinfo });
     dialogRef.afterClosed().subscribe((result) => {
       this.refreshpageEvent.emit();
     });
-    
+
+  }
+  getLabelData() {
+    if (!this.newNote) {
+      this.dataService.currentLabelMessage.subscribe((res) => {
+        this.labelArray = res;
+      })
+    }
+
+    //console.log(this.labelArray);
+  }
+
+  checkboxs() {
+    this.showcheckbox = !this.showcheckbox;
+    this.dataService.getCheckboxData(this.showcheckbox);
+    const dialogRef = this.dialog.open(UpdatenotesComponent, { data: this.noteinfo });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.refreshpageEvent.emit();
+
+    });
   }
 
   setDate(noOfDays: any) {
@@ -79,16 +101,16 @@ export class IconsComponent implements OnInit {
       remainderDate.setHours(20, 0, 0, 0);
       console.log(remainderDate.toLocaleTimeString());
     }
-      else{
-        console.log(noOfDays);
-        remainderDate.setHours(8, 0, 0, 0);
-      }
-      remainderDate.setHours(remainderDate.getHours() + 5);
-      remainderDate.setMinutes(remainderDate.getMinutes() + 30);
+    else {
+      console.log(noOfDays);
+      remainderDate.setHours(8, 0, 0, 0);
+    }
+    remainderDate.setHours(remainderDate.getHours() + 5);
+    remainderDate.setMinutes(remainderDate.getMinutes() + 30);
 
-      if (remainderDate.getTime() <= this.date.getTime()) {
-        remainderDate.setDate(remainderDate.getDate() + noOfDays);
-      }
+    if (remainderDate.getTime() <= this.date.getTime()) {
+      remainderDate.setDate(remainderDate.getDate() + noOfDays);
+    }
     console.log(remainderDate);
 
     console.log(this.selectDate);
@@ -106,23 +128,23 @@ export class IconsComponent implements OnInit {
   }
   AddNoteReminder() {
 
-    console.log(this.selectDate);   
- 
-    if(this.remindTime){
+    console.log(this.selectDate);
+
+    if (this.remindTime) {
       var [hours, minutes] = this.remindTime.split(':');
-      console.log(this.remindTime,"1");
-      
+      console.log(this.remindTime, "1");
+
       console.log('Hours:', hours);
       console.log('Minutes:', minutes);
       this.selectDate.setHours(this.selectDate.getHours() + hours);
-    this.selectDate.setMinutes(this.selectDate.getMinutes() + minutes); 
+      this.selectDate.setMinutes(this.selectDate.getMinutes() + minutes);
     }
-    else{
-      console.log(this.remindTime2,"2");
+    else {
+      console.log(this.remindTime2, "2");
       this.selectDate.setHours(this.remindTime2, 0, 0, 0);
     }
     this.selectDate.setHours(this.selectDate.getHours() + 5);
-    this.selectDate.setMinutes(this.selectDate.getMinutes() + 30);   
+    this.selectDate.setMinutes(this.selectDate.getMinutes() + 30);
     let reqdata = {
       noteIdList: [this.noteinfo.id],
       reminder: this.selectDate
@@ -132,7 +154,7 @@ export class IconsComponent implements OnInit {
     this.noteservice.AddReminder(reqdata).subscribe((res) => {
       console.log(res);
       this.refreshpageEvent.emit();
-    }) 
+    })
   }
 
 
@@ -142,6 +164,7 @@ export class IconsComponent implements OnInit {
     if (this.noteinfo != null) {
       if (this.noteinfo.isDeleted === true) {
         this.show = false;
+        console.log(this.show);
       }
     }
     else {
@@ -150,16 +173,9 @@ export class IconsComponent implements OnInit {
 
   }
 
-  getLabelData() {
-    this.dataService.currentLabelMessage.subscribe((res) => {
-      this.labelArray = res;
-      //console.log(this.labelArray);
-    })
-
-  }
 
   onMenuOpened() {
-    console.log("labels", [this.noteinfo.noteLabels]);
+    //console.log("labels", [this.noteinfo.noteLabels]);
     this.checkedLabels = []
     for (let i = 0; i < (this.noteinfo.noteLabels).length; i++) {
       let id = ([this.noteinfo.noteLabels[i].id]).toString()
@@ -196,7 +212,7 @@ export class IconsComponent implements OnInit {
 
 
 
-  
+
 
   selectLabel(event: any, label: any) {
     if (event.target.checked) {

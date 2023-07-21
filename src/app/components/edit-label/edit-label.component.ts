@@ -11,11 +11,11 @@ export class EditLabelComponent implements OnInit {
 
   title: any;
   newTitle: any;
-  labelArray: any=[];
+  labelArray: any = [];
   id: any;
   show: boolean = true;
-  changeIndex:number=-1;
- // showIcon:boolean=false;
+  changeIndex: number = -1;
+  // showIcon:boolean=false;
 
   @Output() onDelete = new EventEmitter<any>;
   @Output() onCreate = new EventEmitter<any>;
@@ -30,30 +30,31 @@ export class EditLabelComponent implements OnInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId')
     console.log(this.userId);
-    if(this.newTitle!=undefined){
-      this.show=!this.show
-      console.log(this.newTitle);
-    }else{
+    if (this.newTitle != undefined) {
+      this.show = !this.show
       console.log(this.newTitle);
     }
-    
+    // else{
+    //   console.log(this.newTitle);
+    // }
+
   }
 
-  clear(){
-    this.newTitle="";
-    this.show=true;
+  clear() {
+    this.newTitle = "";
+    this.show = true;
   }
 
-  done(event:any){
-    let text=event.target.value
-    if(text!=""){
-      this.show=false;
-    }else{
-      this.show=true;
+  done(event: any) {
+    let text = event.target.value
+    if (text != "") {
+      this.show = false;
+    } else {
+      this.show = true;
     }
   }
 
-  createLabel(){
+  createLabel() {
     let reqdata = {
       label: this.newTitle,
       isDeleted: false,
@@ -61,23 +62,22 @@ export class EditLabelComponent implements OnInit {
     }
     console.log(reqdata);
 
-    if(this.newTitle!=undefined){
+    if (this.newTitle != undefined) {
       this.noteService.createNoteLabels(reqdata).subscribe((res: any) => {
         console.log("create", res);
         this.data.push(reqdata);
-        console.log("data",this.data);
+        console.log("data", this.data);
         this.onCreate.emit();
-        this.newTitle="";
-        console.log("create",this.data);
-        
+        this.newTitle = "";
+        console.log("create", this.data);
+
       })
     }
   }
-  
-  change(index:any){
-    console.log(index,"index");
-    
-this.changeIndex=index;
+
+  change(index: any) {
+    console.log(index, "index");
+    this.changeIndex = index;
   }
 
   submit() {
@@ -85,15 +85,15 @@ this.changeIndex=index;
     this.dialogRef.close();
   }
 
-  delete(id: any,labelData:any) {
+  delete(id: any, labelData: any) {
     console.log(id);
     this.noteService.deleteNoteLabels(id).subscribe((res: any) => {
       console.log("Deleted", res);
-      let index=this.labelArray.indexOf(labelData);
+      let index = this.labelArray.indexOf(labelData);
       console.log(index);
-      
-      this.data.splice(index,1);
-      console.log("dialog",this.data);
+
+      this.data.splice(index, 1);
+      console.log("dialog", this.data);
       this.onDelete.emit();
     })
   }

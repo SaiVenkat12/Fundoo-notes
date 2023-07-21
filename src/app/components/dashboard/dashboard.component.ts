@@ -43,7 +43,7 @@ user:any=[]
   }
 
   searchbg(){
-    this.isSelected=true; 
+    this.isSelected=!this.isSelected; 
   }
 
   getImage(){

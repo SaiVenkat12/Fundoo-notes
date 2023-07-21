@@ -2,39 +2,56 @@
     <div class="note">
         <mat-card class="note-title" [style.background-color]="backgroundColor">
             <mat-card-content class="title-content" *ngIf="!show">
-                <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title" [style.background-color]="backgroundColor">
+                <input class="title-text1" type="text" [(ngModel)]="Title" placeholder="Title"
+                    [style.background-color]="backgroundColor">
                 <div class="title-icons" *ngIf="!show">
-                    <button mat-icon-button matTooltip="pin note" (click)="pinNote()"
-                        class="top-icons">
+                    <button mat-icon-button matTooltip="pin note" (click)="pinNote()" class="top-icons">
                         <span>
-                            <img class="note-icons" src="../../../assets/icons/push_pin_FILL0_wght0_GRAD0_opszNaN.svg" alt="unpinned" *ngIf="!pined">
-                        <img class="note-icons" src="../../../assets/icons/push_pin_FILL1_wght400_GRAD0_opsz40.svg" alt="pinned" *ngIf="pined" >
+                            <img class="note-icons" src="../../../assets/icons/push_pin_FILL0_wght0_GRAD0_opszNaN.svg"
+                                alt="unpinned" *ngIf="!pined">
+                            <img class="note-icons" src="../../../assets/icons/push_pin_FILL1_wght400_GRAD0_opsz40.svg"
+                                alt="pinned" *ngIf="pined">
                         </span></button>
                 </div>
             </mat-card-content>
-            <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()" >
-                <input class="title-text" type="text" [(ngModel)]="description" placeholder="Take a note..." [style.background-color]="backgroundColor">
+            <mat-card-content class="title-content" *ngIf="!show || show" (click)="showing()">
+                <input class="title-text" *ngIf="!viewCheckBoxs" type="text" [(ngModel)]="description"
+                    placeholder="Take a note..." [style.background-color]="backgroundColor">
+                <div *ngIf="viewCheckBoxs" >
+                    <form [formGroup]="inputForm">
+                        <div formArrayName="inputs">
+                            <div *ngFor="let input of inputs.controls; let i = index" class="check">
+                                <mat-checkbox class="example-margin"></mat-checkbox>
+                                <input type="text" class="dynamicInput" placeholder="add checkbox" formControlName="{{i}}"
+                                    (keydown.enter)="addInput()" (keyup)="checkInput()"/>
+                                <mat-icon class="icons" *ngIf="showClose">close</mat-icon>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="title-icons" *ngIf="show">
-                        <button matTooltip="note with checkbox" class="top-icons">
-                            <span>
-                                <img class="note-icons" src="../../../assets/icons/check_box_FILL0_wght400_GRAD0_opsz48.svg">
-                            </span>
-                        </button>
-                        <button matTooltip="note with drawing" class="top-icons">
-                            <span>
-                                <img class="note-icons" src="../../../assets/icons/brush_FILL0_wght400_GRAD0_opsz48.svg">
-                            </span>
-                        </button>
-                        <button matTooltip="note with image" class="top-icons">
-                            <span>
-                                <img class="note-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
-                            </span>
-                        </button>
+                    <button matTooltip="note with checkbox" class="top-icons">
+                        <span>
+                            <img class="note-icons"
+                                src="../../../assets/icons/check_box_FILL0_wght400_GRAD0_opsz48.svg">
+                        </span>
+                    </button>
+                    <button matTooltip="note with drawing" class="top-icons">
+                        <span>
+                            <img class="note-icons" src="../../../assets/icons/brush_FILL0_wght400_GRAD0_opsz48.svg">
+                        </span>
+                    </button>
+                    <button matTooltip="note with image" class="top-icons">
+                        <span>
+                            <img class="note-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
+                        </span>
+                    </button>
                 </div>
             </mat-card-content>
             <mat-card-actions *ngIf="!show">
                 <div class="icons">
-                    <app-icons (backgroundColorChanged)="onBackgroundColorChanged($event)" [newNote]="createNote"></app-icons>
+                    <app-icons (backgroundColorChanged)="onBackgroundColorChanged($event)"
+                        [newNote]="createNote"></app-icons>
                 </div>
                 <button class="closeButton" mat-button matTooltip="Close and Save" (click)="closenote()">Close</button>
             </mat-card-actions>

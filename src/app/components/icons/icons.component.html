@@ -5,7 +5,7 @@
         </span>
     </button>
 
-    <mat-menu class="reminder-menu" #reminder="matMenu" (click)="$event.stopPropagation()" >
+    <mat-menu class="reminder-menu" #reminder="matMenu" (click)="$event.stopPropagation()">
         <div class="remind-Menu">Reminder
             <button mat-menu-item class="remind-btns" (click)=" setDate(0)" *ngIf="isRemind">
                 <div class="remind-item">
@@ -27,7 +27,7 @@
                 </div>
             </button>
 
-            <button mat-menu-item class="remind-btns" [matMenuTriggerFor]="dateTime" #menuTrigger="matMenuTrigger" >
+            <button mat-menu-item class="remind-btns" [matMenuTriggerFor]="dateTime" #menuTrigger="matMenuTrigger">
                 <div class="remind-item-icons">
                     <span>
                         <img class="remind-icons" src="../../../assets/icons/schedule_FILL0_wght400_GRAD0_opsz48.png"
@@ -35,7 +35,7 @@
                     </span>
                     <span> Pick date & time </span>
                 </div>
-                
+
             </button>
 
             <button mat-menu-item class="remind-btns">
@@ -46,91 +46,92 @@
                     </span>
                     <span> Pick place </span>
                 </div>
-                
+
             </button>
         </div>
     </mat-menu>
-    <mat-menu class="date-menu" #dateTime="matMenu" (click)="$event.stopPropagation()" [hasBackdrop]="false"[overlapTrigger]="false">
+    <mat-menu class="date-menu" #dateTime="matMenu" (click)="$event.stopPropagation()" [hasBackdrop]="false"
+        [overlapTrigger]="false">
         <div mat-menu-item>
-            
+
             <mat-form-field>
                 <input matInput [matDatepicker]="picker3" [value]="date" [(ngModel)]="selectDate">
                 <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
                 <mat-datepicker #picker3></mat-datepicker>
-              </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="selectLabel" (click)="$event.stopPropagation()">
-            <mat-form-field class="options" >
-                <input matInput  *ngIf="showOptions" type="time" [(ngModel)]="remindTime" >
+            <mat-form-field class="options">
+                <input matInput *ngIf="showOptions" type="time" [(ngModel)]="remindTime">
                 <mat-select value="8:00AM" *ngIf="!showOptions" [(ngModel)]="remindTime2">
-                <!-- <mat-select value="8:00AM"> -->
-                  <mat-option [value]="8">
-                    <div class="remind-item">
-                        <span> Morning </span>
-                        <span> 8:00AM </span>
-                    </div>
-                  </mat-option>
-                  <mat-option [value]="13">
-                    <div class="remind-item">
-                        <span> Afternoon </span>
-                        <span> 1:00PM </span>
-                    </div>
-                  </mat-option>
-                  <mat-option [value]="18">
-                    <div class="remind-item">
-                        <span> Evening </span>
-                        <span> 6:00PM </span>
-                    </div>
-                  </mat-option>
-                  <mat-option [value]="20">
-                    <div class="remind-item">
-                        <span> Night </span>
-                        <span> 8:00PM </span>
-                    </div>
-                  </mat-option>
-                  <mat-option >
-                    <div class="remind-item" (click)="toggleOptions()">
-                        <span> custom </span>
-                    </div>
-                  </mat-option>
+                    <!-- <mat-select value="8:00AM"> -->
+                    <mat-option [value]="8">
+                        <div class="remind-item">
+                            <span> Morning </span>
+                            <span> 8:00AM </span>
+                        </div>
+                    </mat-option>
+                    <mat-option [value]="13">
+                        <div class="remind-item">
+                            <span> Afternoon </span>
+                            <span> 1:00PM </span>
+                        </div>
+                    </mat-option>
+                    <mat-option [value]="18">
+                        <div class="remind-item">
+                            <span> Evening </span>
+                            <span> 6:00PM </span>
+                        </div>
+                    </mat-option>
+                    <mat-option [value]="20">
+                        <div class="remind-item">
+                            <span> Night </span>
+                            <span> 8:00PM </span>
+                        </div>
+                    </mat-option>
+                    <mat-option>
+                        <div class="remind-item" (click)="toggleOptions()">
+                            <span> custom </span>
+                        </div>
+                    </mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="selectLabel" (click)="$event.stopPropagation()">
             <mat-form-field class="options">
                 <mat-select value="Do not repeat">
-                  <mat-option value="Do not repeat">
-                    <div class="remind-item">
-                        <span> Do not repeat </span>
-                    </div>
-                  </mat-option>
-                  <mat-option value="1:00PM">
-                    <div class="remind-item">
-                        <span> Daily </span>
-                    </div>
-                  </mat-option>
-                  <mat-option value="6:00PM">
-                    <div class="remind-item">
-                        <span> Monthly </span>
-                    </div>
-                  </mat-option>
-                  <mat-option value="1:00PM">
-                    <div class="remind-item">
-                        <span> yearly </span>
-                    </div>
-                  </mat-option>
-                  <mat-option value="1:00PM">
-                    <div class="remind-item">
-                        <span> custom </span>
-                    </div>
-                  </mat-option>
+                    <mat-option value="Do not repeat">
+                        <div class="remind-item">
+                            <span> Do not repeat </span>
+                        </div>
+                    </mat-option>
+                    <mat-option value="1:00PM">
+                        <div class="remind-item">
+                            <span> Daily </span>
+                        </div>
+                    </mat-option>
+                    <mat-option value="6:00PM">
+                        <div class="remind-item">
+                            <span> Monthly </span>
+                        </div>
+                    </mat-option>
+                    <mat-option value="1:00PM">
+                        <div class="remind-item">
+                            <span> yearly </span>
+                        </div>
+                    </mat-option>
+                    <mat-option value="1:00PM">
+                        <div class="remind-item">
+                            <span> custom </span>
+                        </div>
+                    </mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
         </div>
         <div class="save-btn">
             <button mat-button (click)="AddNoteReminder()">Save</button>
         </div>
-        
+
     </mat-menu>
 
     <button matTooltip="collabrator" class="top-icons" (click)="openDialog()" (click)="open()">
@@ -143,7 +144,7 @@
             <img class="side-icons" src="../../../assets/icons/palette_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
     </button>
-    <button matTooltip="add image" class="top-icons" >
+    <button matTooltip="add image" class="top-icons">
         <span>
             <img class="side-icons" src="../../../assets/icons/image_FILL0_wght400_GRAD0_opsz48.svg">
         </span>
@@ -167,16 +168,17 @@
 
         <button mat-menu-item>Add drwaing</button>
         <button mat-menu-item *ngIf="!newNote">Make a copy</button>
-        <button mat-menu-item>show checkboxs</button>
+        <button mat-menu-item (click)="checkboxs()">{{showcheckbox?'hide checkboxs':'show checkboxs'}}</button>
         <button mat-menu-item *ngIf="!newNote">copy to google docs</button>
     </mat-menu>
 
-    <mat-menu class="label-menu" #label="matMenu" (click)="$event.stopPropagation()" >
+    <mat-menu class="label-menu" #label="matMenu" (click)="$event.stopPropagation()">
 
         <div class="label-Radio" (click)="$event.stopPropagation()">Label note
             <input class="search-input" placeholder="Enter the Label" type="search" (keyup)="searchLabel($event)">
             <div *ngFor="let labels of labelArray">
-                <mat-checkbox class="check-btn" (click)="selectLabel($event,labels.id)" [checked]="checkedLabels.includes(labels.id)">{{labels.label}}</mat-checkbox>7
+                <mat-checkbox class="check-btn" (click)="selectLabel($event,labels.id)"
+                    [checked]="checkedLabels.includes(labels.id)">{{labels.label}}</mat-checkbox>7
 
             </div>
         </div>
@@ -204,15 +206,16 @@
             <button class="colors" (click)="noteColor('#e8eaed')" style="background-color: #e8eaed;"></button>
         </div>
     </mat-menu>
-    <div class="title-icons" *ngIf="!show">
-        <button matTooltip="Delete Forever" (click)="deleteForver()" class="top-icons">
-            <span>
-                <img class="side-icons" src="../../../assets/icons/delete_forever_FILL0_wght400_GRAD0_opsz48.svg">
-            </span>
-        </button>
-        <button matTooltip="restore" (click)="restore()" class="top-icons">
-            <span>
-                <img class="side-icons" src="../../../assets/icons/restore_from_trash_FILL0_wght400_GRAD0_opsz48.svg">
-            </span>
-        </button>
-    </div>
+</div>
+<div class="title-icon" *ngIf="!show">
+    <button matTooltip="Delete Forever" (click)="deleteForver()" class="top-icons">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/delete_forever_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+    <button matTooltip="restore" (click)="restore()" class="top-icons">
+        <span>
+            <img class="side-icons" src="../../../assets/icons/restore_from_trash_FILL0_wght400_GRAD0_opsz48.svg">
+        </span>
+    </button>
+</div>

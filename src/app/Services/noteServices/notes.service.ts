@@ -133,7 +133,7 @@ export class NotesService {
   }
 
 
-  deleteNoteLabels(id:any) {
+  deleteNoteLabels(id: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
       headers: new HttpHeaders({
@@ -141,10 +141,10 @@ export class NotesService {
         authorization: this.token,
       })
     }
-    return this.httpService.deleteService("noteLabels/"+id+"/deleteNoteLabel",true, httpHeadersOption)
+    return this.httpService.deleteService("noteLabels/" + id + "/deleteNoteLabel", true, httpHeadersOption)
   }
 
-  updateNoteLabels(reqdata: any,id:any) {
+  updateNoteLabels(reqdata: any, id: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
       headers: new HttpHeaders({
@@ -152,44 +152,44 @@ export class NotesService {
         authorization: this.token,
       })
     }
-    return this.httpService.postService('noteLabels/'+id+'/updateNoteLabel', reqdata, true, httpHeadersOption)
+    return this.httpService.postService('noteLabels/' + id + '/updateNoteLabel', reqdata, true, httpHeadersOption)
   }
 
-  addLabeltoNotes(notesId:any,LabelId:any){
+  addLabeltoNotes(notesId: any, LabelId: any) {
     this.token = localStorage.getItem('token');
     let httpHeadersOption = {
       headers: new HttpHeaders({
         contentType: 'application/json',
         authorization: this.token,
       })
+    }
+    return this.httpService.postService('notes/' + notesId + '/addLabelToNotes/' + LabelId + '/add', '', true, httpHeadersOption)
   }
-  return this.httpService.postService('notes/'+notesId+'/addLabelToNotes/'+LabelId+'/add','', true, httpHeadersOption)
-}
 
-removeLabelToNotes(notesId:any,LabelId:any){
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
-}
-return this.httpService.postService('notes/'+notesId+'/addLabelToNotes/'+LabelId+'/remove','', true, httpHeadersOption)
-}
-
-AddReminder(reqdata: any) {
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
+  removeLabelToNotes(notesId: any, LabelId: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/' + notesId + '/addLabelToNotes/' + LabelId + '/remove', '', true, httpHeadersOption)
   }
-  return this.httpService.postService('notes/addUpdateReminderNotes', reqdata, true, httpHeadersOption)
-}
 
-getReminderNotes(){
-  this.token = localStorage.getItem('token');
+  AddReminder(reqdata: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/addUpdateReminderNotes', reqdata, true, httpHeadersOption)
+  }
+
+  getReminderNotes() {
+    this.token = localStorage.getItem('token');
     let httpHeadersOption = {
       headers: new HttpHeaders({
         contentType: 'application/json',
@@ -197,62 +197,95 @@ getReminderNotes(){
       })
     }
     return this.httpService.getService('notes/getReminderNotesList', true, httpHeadersOption)
-}
-
-removeReminder(reqdata: any) {
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
   }
-  return this.httpService.postService('notes/removeReminderNotes', reqdata, true, httpHeadersOption)
-}
 
-addCollabrator(reqdata: any,id:any) {
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
+  removeReminder(reqdata: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/removeReminderNotes', reqdata, true, httpHeadersOption)
   }
-  return this.httpService.postService('notes/'+id+'/AddcollaboratorsNotes', reqdata, true, httpHeadersOption)
-}
 
-removeCollabrator(notesId:any,collabId:any){
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
-}
-return this.httpService.deleteService('notes/'+notesId+'/removeCollaboratorsNotes/'+collabId, true, httpHeadersOption)
-}
-
-getNotesListbyLabel(labelName:any){
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
+  addCollabrator(reqdata: any, id: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/' + id + '/AddcollaboratorsNotes', reqdata, true, httpHeadersOption)
   }
-  return this.httpService.postService('notes/getNotesListByLabel/'+labelName+'?access_token='+this.token, '', true, httpHeadersOption)
-}
 
-pinAndUnpinNotes(reqdata: any) {
-  this.token = localStorage.getItem('token');
-  let httpHeadersOption = {
-    headers: new HttpHeaders({
-      contentType: 'application/json',
-      authorization: this.token,
-    })
+  removeCollabrator(notesId: any, collabId: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.deleteService('notes/' + notesId + '/removeCollaboratorsNotes/' + collabId, true, httpHeadersOption)
   }
-  return this.httpService.postService('notes/pinUnpinNotes?access_token='+this.token, reqdata, true, httpHeadersOption)
-}
+
+  getNotesListbyLabel(labelName: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/getNotesListByLabel/' + labelName + '?access_token=' + this.token, '', true, httpHeadersOption)
+  }
+
+  pinAndUnpinNotes(reqdata: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/pinUnpinNotes?access_token=' + this.token, reqdata, true, httpHeadersOption)
+  }
+
+  addChecklists(reqdata: any, id: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/' + id + '/checklist/add', reqdata, true, httpHeadersOption)
+  }
+
+  removeChecklists(reqdata: any, id: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/' + id + '/checklist/' + reqdata.checklistId + '/remove', reqdata, true, httpHeadersOption)
+  }
+
+  updateChecklists(reqdata: any, id: any) {
+    this.token = localStorage.getItem('token');
+    let httpHeadersOption = {
+      headers: new HttpHeaders({
+        contentType: 'application/json',
+        authorization: this.token,
+      })
+    }
+    return this.httpService.postService('notes/' + id + '/checklist/'+ reqdata.checklistId + '/update' , reqdata, true, httpHeadersOption)
+  }
 
 }
 

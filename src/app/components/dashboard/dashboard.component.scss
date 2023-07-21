@@ -126,7 +126,7 @@ mat-toolbar.mat-primary {
   justify-content: flex-start;
   //background: #feefc3;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
 }
 
 .side-title:focus {
@@ -212,7 +212,7 @@ box-shadow: none;
   }
 
 ::ng-deep .mat-mdc-menu-panel.mat-mdc-menu-panel{
-  width: 280px;
+  //width: 280px;
   max-width:350px
 }
 

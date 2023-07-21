@@ -44,6 +44,7 @@
 .note-title{
     margin: 8px;
     width: 240px;
+    height: fit-content;
     // transform: translate(256px, 0px);
     display: flex;
     flex-direction: column;
@@ -73,6 +74,11 @@ img{
     font-size: 16px;
     display: flex;
     justify-content: space-between;
+}
+
+.content{
+    max-height: 300px;
+    overflow: hidden;
 }
 
 
@@ -111,6 +117,13 @@ img{
     
 }
 
+input{
+    width: 65%;
+    font-size: 18px;
+    font-family: "Roboto",arial,sans-serif;
+    border: none;
+    outline: none;
+}
 
 .element-bg-1 {
     background-color: rgb(187, 69, 69);

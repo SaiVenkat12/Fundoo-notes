@@ -21,6 +21,9 @@ export class DataService {
   private labelData = new BehaviorSubject("");
   currentLabelMessage = this.labelData.asObservable();
 
+  private showCheckboxs = new BehaviorSubject("");
+  currentCheckBox = this.showCheckboxs.asObservable();
+
   private tokenData = new BehaviorSubject("");
   currentToken = this.tokenData.asObservable();
 
@@ -44,6 +47,10 @@ export class DataService {
 
   setTokenData(message: any){
     this.tokenData.next(message);
+  }
+
+  getCheckboxData(message: any){
+    this.showCheckboxs.next(message);
   }
 
 }
