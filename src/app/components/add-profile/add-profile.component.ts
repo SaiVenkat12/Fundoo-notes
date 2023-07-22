@@ -18,34 +18,35 @@ export class AddProfileComponent implements OnInit {
   imageUrl: string | undefined;
   show: boolean = false;
   imagefile = new FormData();
-  getImg:boolean = false;
-  getImgUrl:any
+  getImg: boolean = false;
+  getImgUrl: any
 
   @ViewChild('fileInput') fileInput: any;
-cropImgPreview: any;
-imgChangeEvt: any;
+  cropImgPreview: any;
+  imgChangeEvt: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<AddProfileComponent>,
     private userService: UserService, private dataService: DataService) { }
+
   ngOnInit(): void {
-    if(localStorage.getItem('imageUrl') != null){
-      this.getImg=true;
-      this.getImgUrl=this.data+localStorage.getItem('imageUrl')
-      console.log(this.data+localStorage.getItem('imageUrl'));
+    if (localStorage.getItem('imageUrl') != null) {
+      this.getImg = true;
+      this.getImgUrl = this.data + localStorage.getItem('imageUrl')
+      console.log(this.data + localStorage.getItem('imageUrl'));
     }
   }
 
-    
+
 
   save() {
-    
+
     let reqData = {
-    type:this.imagefile
+      type: this.imagefile
     }
 
     this.userService.uploadProfilePic(this.imagefile).subscribe((res: any) => {
       console.log(res);
-console.log(this.data);
+      console.log(this.data);
 
     })
   }
@@ -69,8 +70,8 @@ console.log(this.data);
       reader.readAsDataURL(file);
 
       // You can also retrieve the file contents here if needed
-      const contents = reader.result;
-      console.log(contents);
+      // const contents = reader.result;
+      // console.log(contents);
     }
   }
 
@@ -98,7 +99,7 @@ console.log(this.data);
       const formData = new FormData();
       const file = this.base64ToFile(this.croppedImage);
       formData.append('croppedImage', file, file.name);
-      
+
       // Use the formData as needed (e.g., send it to an API endpoint)
       console.log(formData);
 
